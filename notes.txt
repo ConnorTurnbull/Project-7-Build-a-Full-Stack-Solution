@@ -1,0 +1,12 @@
+single page app
+react useState intially, may change later with scope
+react routerDOM
+hash routing
+wire framing - add to repo
+react-bootstrap
+data schemas - spreadsheet?
+parent IDs
+
+
+
+canva.com
