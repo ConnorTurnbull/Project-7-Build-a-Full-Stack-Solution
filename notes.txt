@@ -2,8 +2,6 @@ single page app
 react useState intially, may change later with scope
 react routerDOM
 hash routing
-wire framing - add to repo
-react-bootstrap
 data schemas - spreadsheet?
 parent IDs
 
@@ -12,4 +10,5 @@ parent IDs
 canva.com
 
 
-custom height, width, colours etc?
+better way to manage columns widths?
+scale sizes all at once? everything feels a bit big by default
