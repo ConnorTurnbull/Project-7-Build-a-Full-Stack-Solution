@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Image } from "react-bootstrap";
-import "./popup.css"
+import "./popup.scss"
 import logo from "./icon-black-small.png"
 
 function Signup() {

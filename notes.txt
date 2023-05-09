@@ -1,14 +1,7 @@
-single page app
-react useState intially, may change later with scope
-react routerDOM
 hash routing
 data schemas - spreadsheet?
 parent IDs
 
-
-
-canva.com
-
-
-better way to manage columns widths?
-scale sizes all at once? everything feels a bit big by default
+state in app to pass to login and signup - basically default state after user has logged in
+set up user routes in back end for log in & sign up
+use fetch for backend
