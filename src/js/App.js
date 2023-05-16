@@ -5,8 +5,8 @@ import { useState } from 'react';
 
 //Components:
 import SideNav from '../components/aside-nav/sideNav';
-import Login from '../components/login/loginButton';
-import Signup from '../components/login/signupButton';
+import Login from '../components/login/loginPopup';
+import Signup from '../components/login/signupPopup';
 
 //Images:
 import MainLogo from '../images/icon-left-font-monochrome-black.svg';
@@ -18,7 +18,7 @@ import '../scss/App.scss';
 function App() {
   return (
     <div className='app' >
-      <Container fluid className="header bg-primary"  >
+      <Container fluid className="bg-primary"  >
         <Row className='p-3'>
           
           <Col sm={2}>
@@ -39,11 +39,11 @@ function App() {
       <Container fluid className="main-container">
         <Row>
           
-          <Col className='thread-nav bg-secondary pb-3' md={2} lg={2} xl={2}>
+          <Col className='thread-nav bg-secondary pb-3' sm={2}>
             <SideNav/>
           </Col>
           
-          <Col className='content-window d-flex justify-content-center align-items-center bg-light' md={10} lg={10} xl={10}>
+          <Col className='content-window d-flex justify-content-center align-items-center bg-light' sm={10}>
             'content window'
           </Col>
 
