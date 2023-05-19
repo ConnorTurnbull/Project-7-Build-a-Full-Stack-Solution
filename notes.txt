@@ -11,3 +11,4 @@ use fetch for backend
 backend user files copied from p6
 installed modules required (jwt, bcrypt, mongoose validator)
 
+formic

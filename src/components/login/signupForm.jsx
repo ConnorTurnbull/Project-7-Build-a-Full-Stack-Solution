@@ -9,6 +9,13 @@ const Signup = () => {
         e.preventDefault()
         console.log(email, password)
 
+        fetch("//localhost:4200/api/auth/signup", {
+            method: 'POST', 
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json())
+        
+        .then(session => {console.log(session)})
         }
 
     return (

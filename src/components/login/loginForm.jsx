@@ -8,6 +8,15 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(email, password)
+
+        fetch("//localhost:4200/api/auth/login", {
+            method: 'POST', 
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json())
+        
+        .then(session => {console.log(session)})
+        
     }
 
     return (

@@ -44,7 +44,8 @@ function App() {
           </Col>
           
           <Col className='content-window d-flex justify-content-center align-items-center bg-light' sm={10}>
-            'content window'
+            Welcome to Groupomania! Please log in or create an account to get started.
+            
           </Col>
 
         </Row>  
