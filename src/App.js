@@ -18,13 +18,10 @@ import './scss/App.scss';
 
 
 function App() {
-  // const [authenticated, setAuthenticated] = useState(false)
-  
-  // function userAuth() {
-  //   setAuthenticated(true)
-  // }
-  
-  const authenticated = sessionStorage.getItem('userId')
+  const [authenticated, setAuthenticated] = useState(false)
+  const [session, setSession] = useState({})
+  console.log(session)
+  /* const authenticated = sessionStorage.getItem('userId') */
   
   //User logged in
 
@@ -78,11 +75,11 @@ function App() {
           </Col>
 
           <Col sm={{ span: 1, offset: 8 }}>
-            <Login />
+            <Login setAuthenticated={setAuthenticated} setSession={setSession}/>
           </Col>
 
           <Col sm={1}>
-            <Signup />
+            <Signup setAuthenticated={setAuthenticated} setSession={setSession}/>
           </Col>
 
         </Row>

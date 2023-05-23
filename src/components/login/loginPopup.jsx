@@ -4,14 +4,14 @@ import "./popup.scss"
 import logo from "./icon-black-small.png"
 import LoginHandler from "./loginForm"
 
-function Popup() {
+function LoginPopup({ setAuthenticated, setSession }) {
   const [popup, setPopup] = useState(false)
   const togglePopup = () => {
     setPopup(!popup)
   }
   
   // // Prevents page scroll while window is open
-  if (Popup) {
+  if (popup) {
     document.body.classList.add('active-popup')
   } else {
     document.body.classList.remove('active-popup')
@@ -36,7 +36,7 @@ function Popup() {
               X
             </Button>
             
-            <LoginHandler />
+            <LoginHandler setAuthenticated={setAuthenticated} setSession={setSession}/>
           </div>
         </div>
       )}
@@ -44,4 +44,4 @@ function Popup() {
   )
 }
 
-export default Popup
+export default LoginPopup

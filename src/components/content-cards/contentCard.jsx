@@ -6,7 +6,7 @@ function ContentCard() {
     return (
         <Row className="gy-3">
             {Array.from({ length: 4 }).map((_, idx) => (
-                <Col sm={6} className=" d-flex justify-content-center ">
+                <Col key={idx} sm={6} className=" d-flex justify-content-center ">
                     <Card  style={{ width: '20rem' }}>
                         <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Body>

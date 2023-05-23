@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Form, Button, Container } from "react-bootstrap"
 import Popup from "./loginPopup"
 
-const LoginHandler = () => {
+const LoginHandler = ({ setAuthenticated, setSession }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -16,7 +16,12 @@ const LoginHandler = () => {
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json())
         
-        .then(session => {sessionStorage.setItem('userId', session.userId)})
+        .then(session => {
+            sessionStorage.setItem('userId', session.userId)
+            setSession(session)
+            setAuthenticated(true)
+            
+        })
            
     }
 
