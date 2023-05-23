@@ -7,8 +7,6 @@ state in app to pass to login and signup - basically default state after user ha
 set up user routes in back end for log in & sign up
 use fetch for backend
 
---11/05--
-backend user files copied from p6
-installed modules required (jwt, bcrypt, mongoose validator)
+
 
 formic

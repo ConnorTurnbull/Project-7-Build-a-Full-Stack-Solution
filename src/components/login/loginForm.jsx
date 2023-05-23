@@ -1,13 +1,14 @@
 import React, { useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Container } from "react-bootstrap"
+import Popup from "./loginPopup"
 
-const Login = () => {
+const LoginHandler = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(email, password)
 
         fetch("//localhost:4200/api/auth/login", {
             method: 'POST', 
@@ -15,9 +16,21 @@ const Login = () => {
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json())
         
-        .then(session => {console.log(session)})
-        
+        .then(session => {sessionStorage.setItem('userId', session.userId)})
+           
     }
+
+    // if (authenticated) {
+    //     console.log(authenticated)
+        
+    //     return (
+            
+    //         <Container fluid className="text-center">
+    //             <p>Welcome Back!</p>
+    //         </Container>
+            
+    //     )
+    // }
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -42,4 +55,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default LoginHandler
