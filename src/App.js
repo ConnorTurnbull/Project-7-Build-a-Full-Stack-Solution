@@ -7,7 +7,6 @@ import { Button, Col, Row, Container, Image, Stack } from 'react-bootstrap';
 import SideNav from './components/aside-nav/sideNav';
 import Login from './components/login/loginPopup';
 import Signup from './components/login/signupPopup';
-import LoginHandler from './components/login/loginForm';
 import ContentCard from './components/content-cards/contentCard';
 
 //Images:
@@ -21,7 +20,6 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false)
   const [session, setSession] = useState({})
   console.log(session)
-  /* const authenticated = sessionStorage.getItem('userId') */
   
   //User logged in
 
