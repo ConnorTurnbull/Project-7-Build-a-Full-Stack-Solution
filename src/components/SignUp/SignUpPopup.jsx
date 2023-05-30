@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Image } from "react-bootstrap";
-import "./popup.scss"
-import logo from "./icon-black-small.png"
-import Signup from "./signupForm";
+import "../../scss/popup.scss"
+import logo from "../../images/icon-black-small.png"
+import SignUp from "./SignUpHandler";
 
 
 function Popup() {
@@ -20,7 +20,7 @@ function Popup() {
 
   return (
     <>
-      <Button className='signup-button px-3 text-nowrap' size='sm' variant="light" onClick={togglePopup}>
+      <Button className='w-100 text-nowrap' size='sm' variant="light" onClick={togglePopup}>
         Sign Up
       </Button>
 
@@ -34,7 +34,7 @@ function Popup() {
               X
             </Button>
             
-            <Signup />
+            <SignUp />
 
           </div>
         </div>

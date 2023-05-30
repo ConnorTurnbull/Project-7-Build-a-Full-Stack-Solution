@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Image } from "react-bootstrap";
-import "./popup.scss"
-import logo from "./icon-black-small.png"
-import LoginHandler from "./loginForm"
+import "../../scss/popup.scss"
+import logo from "../../images/icon-black-small.png"
+import LoginHandler from "./LoginHandler"
 
 function LoginPopup({ setAuthenticated, setSession }) {
   const [popup, setPopup] = useState(false)
@@ -19,7 +19,7 @@ function LoginPopup({ setAuthenticated, setSession }) {
 
   return (
     <>
-      <Button className='login-button px-3 text-nowrap' variant="light" size='sm' onClick={togglePopup}>
+      <Button className='w-100 text-nowrap' variant="light" size='sm' onClick={togglePopup}>
         Log In
       </Button>
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { Form, Button, Container } from "react-bootstrap"
-import Popup from "./loginPopup"
+import { Form, Button } from "react-bootstrap"
 
 const LoginHandler = ({ setAuthenticated, setSession }) => {
     const [email, setEmail] = useState('')
@@ -24,18 +23,6 @@ const LoginHandler = ({ setAuthenticated, setSession }) => {
         })
            
     }
-
-    // if (authenticated) {
-    //     console.log(authenticated)
-        
-    //     return (
-            
-    //         <Container fluid className="text-center">
-    //             <p>Welcome Back!</p>
-    //         </Container>
-            
-    //     )
-    // }
 
     return (
         <Form onSubmit={handleSubmit}>

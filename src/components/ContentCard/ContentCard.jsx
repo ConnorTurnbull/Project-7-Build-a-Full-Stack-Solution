@@ -4,7 +4,7 @@ import { Row, Col, Card, } from "react-bootstrap"
 function ContentCard() {
 
     return (
-        <Row className="gy-3">
+        <Row className="gy-3 active-popup">
             {Array.from({ length: 4 }).map((_, idx) => (
                 <Col key={idx} sm={6} className=" d-flex justify-content-center ">
                     <Card  style={{ width: '20rem' }}>

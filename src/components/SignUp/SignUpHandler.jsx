@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 
-const Signup = () => {
+const SignUpHandler = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -48,4 +48,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default SignUpHandler

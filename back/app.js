@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user');
+const threadRoutes = require('./routes/thread')
 
 const app = express();
 app.use(express.json());
@@ -25,5 +26,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/auth', userRoutes);
+app.use('/api/auth', threadRoutes);
 
 module.exports = app;
