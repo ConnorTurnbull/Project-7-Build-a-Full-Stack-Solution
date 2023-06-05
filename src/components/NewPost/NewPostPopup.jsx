@@ -3,7 +3,7 @@ import { Button, Image } from 'react-bootstrap';
 import NewPostHandler from "../NewPost/NewPostHandler"
 import logo from "../../images/icon-black-small.png"
 
-function NewPostPopup() {
+function NewPostPopup({  }) {
     const [popup, setPopup] = useState(false)
     const togglePopup = () => {
         setPopup(!popup)
