@@ -1,48 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { Button } from 'react-bootstrap';
+import { getThreads } from "../../utilities";
 
 
-function SideNav() {
+function SideNav({ session }) {
     const [threads, setThreads] = useState([])
     const [threadID, setThreadID] = useState('')
 
-    const getThreads = async () => {
-
-        fetch("//localhost:4200/api/auth/thread")
-            .then(data => {
-                return data.json()
-            })
-            .then(threadData => {
-                console.log(threadData)
-                setThreads(threadData)
-            })
-    }
 
     useEffect(() => {
-        getThreads()
+        getThreads({ setThreads, queryString:"?userId="+session.userId })
     }, [])
     
    
-    // const getPosts = async () => {
-        
-    //     fetch("//localhost:4200/api/auth/post")           
-    //     .then(data => {
-    //         return data.json()
-    //     })
-    //     .then(postData => {
-    //         console.log(postData)
-    //     })
-
-    // }
-
     return (
-        <aside className="sideNav d-flex align-items-center justify-content-center vstack gap-3">
+       
+       <aside className="sideNav d-flex align-items-center justify-content-center vstack gap-3">
             
             <h3 className="mt-2 text-light">Threads</h3>
-            {threads.map(thread => (
+            {Array.isArray(threads)?threads.map(thread => (
                 <a href='#' value={thread._id} key={thread._id}>{thread.title}</a>
-            ))}
-
+            )):<p>{threads?.message}</p>}
+        
         </aside>
+
     )
 }
 
