@@ -5,6 +5,7 @@ import { Button, Col, Row, Container, Image, Stack, InputGroup, Form } from 'rea
 //Components:
 import ContentCard from './components/ContentCard/ContentCard';
 import Login from './components/Login/LoginPopup';
+import Logout from './components/Logout/Logout';
 import SideNav from './components/SideNav/SideNav';
 import SignUp from './components/SignUp/SignUpPopup';
 import SearchBar from './components/Search/SearchBar';
@@ -66,9 +67,7 @@ function App() {
             {/* Log Out */}
 
             <Col className='px-1 d-flex justify-content-center' sm={{ span: 1, offset: 0 }}>
-              <Button className=' w-100 text-nowrap ' size='sm' variant="light">
-                Log Out
-              </Button>
+              <Logout setAuthenticated={setAuthenticated} setSearchResults={setSearchResults} searchResults={searchResults}/>
             </Col>
 
           </Row>
