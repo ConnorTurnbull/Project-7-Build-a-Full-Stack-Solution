@@ -3,27 +3,33 @@ import { InputGroup, Form, Button } from 'react-bootstrap';
 import { getThreads } from "../../utilities";
 import { Search } from "react-bootstrap-icons"
 
-function SearchBar({ setSearchResults }) {
+function SearchBar({ setSearchResults, setSearchState }) {
     const [userSearch, setUserSearch] = useState('')
-    const [threads, setThreads] = useState([])
 
-    const allThreads = async => {
-        fetch("//localhost:4200/api/auth/thread")
+    const queryThreads = async => {
+        fetch("//localhost:4200/api/auth/thread?title=" + userSearch)
             .then(data => {
-                return data.json()
-            })
-        console.log(allThreads)
-    }
+            return data.json()
+        })
+        .then(threadData => {
+            console.log(threadData)
+            setSearchResults(threadData)
+            setSearchState(true)
+        })
+}
 
 
-    return (
+return (
+    <Form>
         <InputGroup>
-            <Form.Control onChange={(e) => setUserSearch(e.target.value)} placeholder="Discover new threads..." />
-            <Button size='sm' variant="light" >
-                <Search />
+            <Form.Control name='Search Bar' onChange={(e) => setUserSearch(e.target.value)} placeholder="Discover new threads..." />
+            <Button title='Search submit button' onClick={queryThreads} size='sm' variant="light" >
+                <Search aria-hidden="true" />
             </Button>
         </InputGroup>
-    )
+    </Form>
+
+)
 }
 
 export default SearchBar

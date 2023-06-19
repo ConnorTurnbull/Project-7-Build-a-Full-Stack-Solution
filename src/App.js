@@ -1,5 +1,5 @@
 //React modules:
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Row, Container, Image, Stack, InputGroup, Form } from 'react-bootstrap';
 
 //Components:
@@ -23,8 +23,12 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false)
   const [session, setSession] = useState({})
   const [searchResults, setSearchResults] = useState([])
+  const [searchState, setSearchState] = useState(false)
 
-  console.log(session)
+  console.log(searchResults)
+  console.log(searchState)
+
+
 
   //User logged in
 
@@ -35,21 +39,31 @@ function App() {
         <Container fluid className="bg-primary"  >
           <Row className='p-3'>
 
+            {/* main logo */}
+
             <Col className='d-flex align-items-center'sm={2}>
               <Image fluid src={MainLogo} />
             </Col>
 
+            {/* Search Bar */}
+
             <Col className="px-1 d-flex" sm={{ span: 5, offset: 1 }}>
-              <SearchBar setSearchResults={setSearchResults}/>
+              <SearchBar setSearchResults={setSearchResults} setSearchState={setSearchState}/>
             </Col>
+
+            {/* New Thread */}
 
             <Col className="px-1 d-flex justify-content-center" sm={{ span: 1, offset: 1 }}>
               <NewThreadPopup />
             </Col>
 
+            {/* New Post */}
+
             <Col className='px-1 d-flex justify-content-center' sm={{ span: 1, offset: 0 }}>
               <NewPostPopup />
             </Col>
+
+            {/* Log Out */}
 
             <Col className='px-1 d-flex justify-content-center' sm={{ span: 1, offset: 0 }}>
               <Button className=' w-100 text-nowrap ' size='sm' variant="light">
@@ -68,8 +82,7 @@ function App() {
             </Col>
 
             <Col className='content-window-logged d-flex bg-light p-5' sm={10}>
-              <ContentCard />
-              {/* <SearchResultCard /> */}
+              {searchState ? <SearchResultCard searchResults={searchResults}/> : <ContentCard/>}
             </Col>
 
           </Row>

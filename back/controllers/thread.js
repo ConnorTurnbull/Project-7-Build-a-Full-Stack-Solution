@@ -7,7 +7,8 @@ exports.newThread = (req, res, next) => {
     
 
     const thread = new Thread({
-        title: req.body.title
+        title: req.body.title,
+        description: req.body.description
     });
 
     thread.save().then(
@@ -43,10 +44,14 @@ exports.getThread = async (req, res, next) => {
     }
     options._id = userThreads
   }
-    
+  else if (req.query.title) {
+    options.title = {$regex:new RegExp(req.query.title, "i")}
+  }
+  console.log(options)  
 
   Thread.find(options).then(
       (threads) => {
+        console.log(threads)
         return res.status(200).json(threads);
       }
     ).catch(
