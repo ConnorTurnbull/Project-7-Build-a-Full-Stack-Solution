@@ -1,10 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Logout = ({ setAuthenticated, setSearchResults, searchResults }) => {
+const Logout = ({ setAuthenticated, setSearchResults }) => {
 
     function LogoutHander() {
         setAuthenticated(false)
+        setSearchResults('')
         sessionStorage.clear()
     }
 
