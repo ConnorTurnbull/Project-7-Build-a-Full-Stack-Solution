@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { getThreads } from "../../utilities";
 
 
-function SideNav({ session, setThreadState, setPosts }) {
+function SideNav({ session, setThreadState, setPosts, setDefaultState }) {
     const [threads, setThreads] = useState([])
     const [selectThread, setSelectThread] = useState('')
 
@@ -13,10 +13,6 @@ function SideNav({ session, setThreadState, setPosts }) {
         getThreads({ setThreads, queryString: "?userId=" + session.userId })
     }, [])
 
-    useEffect(() => {
-        getPosts()
-    }, [selectThread])
-
     function getPosts() {
         fetch("//localhost:4200/api/auth/post?selectedthread=" + selectThread)
             .then(data => {
@@ -24,9 +20,20 @@ function SideNav({ session, setThreadState, setPosts }) {
             })
             .then(postData => {
                 console.log(postData)
+                console.log(selectThread)
                 setPosts(postData)
-                setThreadState(true)
             })
+    }
+    
+    useEffect(() => {
+        getPosts()
+    }, [selectThread])
+    
+    function displayThread(e) {
+        e.preventDefault()
+        setSelectThread(threads._id)
+        setDefaultState(false)
+        setThreadState(true)
     }
 
     return (
@@ -35,9 +42,7 @@ function SideNav({ session, setThreadState, setPosts }) {
 
             <h3 className="mt-2 text-light">Threads</h3>
             {Array.isArray(threads) ? threads.map(thread => (
-                <a onClick={(e) => {
-                    e.preventDefault(); setSelectThread(thread._id)
-                }}
+                <a onClick={displayThread}
                     href='#'
                     title={thread.title}
                     value={thread._id}

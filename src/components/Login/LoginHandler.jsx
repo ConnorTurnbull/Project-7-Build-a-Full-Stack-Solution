@@ -19,7 +19,6 @@ const LoginHandler = ({ setAuthenticated, setSession }) => {
             sessionStorage.setItem('userId', session.userId)
             setSession(session)
             setAuthenticated(true)
-            
         })
            
     }

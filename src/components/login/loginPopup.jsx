@@ -36,7 +36,13 @@ function LoginPopup({ setAuthenticated, setSession }) {
               X
             </Button>
             
-            <LoginHandler setAuthenticated={setAuthenticated} setSession={setSession}/>
+            <LoginHandler
+             
+              setAuthenticated={setAuthenticated} 
+              setSession={setSession} 
+            
+            />
+
           </div>
         </div>
       )}
