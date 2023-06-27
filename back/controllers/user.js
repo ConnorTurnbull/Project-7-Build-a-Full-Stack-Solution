@@ -73,3 +73,16 @@ exports.login = ( req, res, next ) => {
         }
     );
 };
+
+
+// copy from like/dislike from p6?
+
+exports.subscribe = ( req, res, next ) => {
+    console.log(req.body)
+
+    User.findOne({ _id: req.params._id }).then(
+        (user) => {
+
+        }
+    )
+}

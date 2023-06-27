@@ -1,3 +1,24 @@
 .app {
     height: 100vh;
+    
+}
+
+.thread-nav {
+    height: 100vh;
+}
+
+.content-window {
+    height: 100vh;
+}
+
+.content-window-logged {
+    height: 100vh;
+}
+
+.nav-divider {
+    border: #0d6efd solid 1px;
+    height: 1px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

@@ -1,8 +1,11 @@
-import React from "react";
-import { Row, Col, Card, } from "react-bootstrap"
-import { Heart } from "react-bootstrap-icons"
+import { React, useState } from "react";
+import { Row, Col, Card, Button } from "react-bootstrap"
+import { Heart, HeartFill } from "react-bootstrap-icons"
+import SubscriptionHandler from "../Subscribe/SubscriptionHandler"
 
 function SearchResultCard({ searchResults }) {
+
+    console.log(searchResults)
 
     return (
         <Row className="gy-3 active-popup">
@@ -21,7 +24,9 @@ function SearchResultCard({ searchResults }) {
                                     </Col>
 
                                     <Col className='d-flex justify-content-center align-items-center' sm={{ span: 3 }}>
-                                        <Heart color='blue' size={24} />
+
+                                        <SubscriptionHandler thread={thread} searchResults={searchResults} />
+                                            
                                     </Col>
 
                                 </Row>

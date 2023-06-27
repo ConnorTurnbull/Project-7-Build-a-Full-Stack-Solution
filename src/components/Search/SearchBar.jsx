@@ -3,7 +3,7 @@ import { InputGroup, Form, Button } from 'react-bootstrap';
 import { getThreads } from "../../utilities";
 import { Search } from "react-bootstrap-icons"
 
-function SearchBar({ setSearchResults, setSearchState }) {
+function SearchBar({ setSearchResults, setSearchState, setDefaultState }) {
     const [userSearch, setUserSearch] = useState('')
 
     const queryThreads = async => {
@@ -15,6 +15,7 @@ function SearchBar({ setSearchResults, setSearchState }) {
             console.log(threadData)
             setSearchResults(threadData)
             setSearchState(true)
+            setDefaultState(false)
         })
 }
 

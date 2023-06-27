@@ -4,7 +4,7 @@ import "../../scss/popup.scss"
 import logo from "../../images/icon-black-small.png"
 import LoginHandler from "./LoginHandler"
 
-function LoginPopup({ setAuthenticated, setSession }) {
+function LoginPopup({ setAuthenticated, setSession, setDefaultState }) {
   const [popup, setPopup] = useState(false)
   const togglePopup = () => {
     setPopup(!popup)
@@ -40,6 +40,7 @@ function LoginPopup({ setAuthenticated, setSession }) {
              
               setAuthenticated={setAuthenticated} 
               setSession={setSession} 
+              setDefaultState={setDefaultState}
             
             />
 

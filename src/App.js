@@ -23,13 +23,15 @@ import NewThreadPopup from './components/NewThread/NewThreadPopup';
 
 
 function App() {
-  const [defaultState, setDefaultState] = useState(true)
+  const [defaultState, setDefaultState] = useState(true)  
+  const [searchState, setSearchState] = useState(false)
+  const [threadState, setThreadState] = useState(false)
   const [authenticated, setAuthenticated] = useState(false)
+  
   const [session, setSession] = useState({})
   const [searchResults, setSearchResults] = useState([])
-  const [searchState, setSearchState] = useState(false)
   const [posts, setPosts] = useState([])
-  const [threadState, setThreadState] = useState(false)
+
 
   console.log("Default State " + defaultState)
   console.log("Search State " + searchState)
@@ -62,6 +64,7 @@ function App() {
 
                     setSearchResults={setSearchResults}
                     setSearchState={setSearchState}
+                    setDefaultState={setDefaultState}
 
                   />
 
@@ -117,12 +120,14 @@ function App() {
               
               />
 
+              <div className='nav-divider d-flex'></div>
+
               <SideNav
 
                 session={session}
                 setThreadState={setThreadState}
-                setPosts={setPosts}
                 setDefaultState={setDefaultState}
+                setPosts={setPosts}
 
               />
 
@@ -130,13 +135,13 @@ function App() {
 
             {/* Main Container */}
 
-            <Col className='content-window-logged d-flex bg-light p-5' sm={10}>
+            <Col className='content-window-logged d-flex justify-content-center bg-light p-5' sm={10}>
               
               <main>
 
                 {defaultState ? <DefaultView /> : null}
                 {searchState ? <SearchResultCard searchResults={searchResults} /> : null}
-                {threadState ? <ContentCard posts={posts} /> : null}
+                {threadState ? <ContentCard posts={posts}/> : null}
 
               </main>
 
@@ -174,7 +179,6 @@ function App() {
               setSession={setSession}
               setDefaultState={setDefaultState}
               setThreadState={setThreadState}
-              setPosts={setPosts}
               setSearchResults={setSearchResults}
 
             />

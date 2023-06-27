@@ -1,12 +1,10 @@
-hash routing
-data schemas - spreadsheet?
-parent IDs
-research versioning
+something weird going on with states - 
+    sidenav is setting thread state on render but shouldn't be.
+    problem to do with map?
 
-state in app to pass to login and signup - basically default state after user has logged in
-set up user routes in back end for log in & sign up
-use fetch for backend
+don't know how to do backend for subscribe feature
 
+individual thread fetch not working. 
+    Call is not correct, don't know how to correct it.
+    Calling all posts instead of filtering per thread.
 
-
-formic

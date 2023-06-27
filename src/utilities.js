@@ -5,7 +5,7 @@ export const getThreads = async ({ setThreads, queryString }) => {
             return data.json()
         })
         .then(threadData => {
-            console.log(threadData)
+            // console.log(threadData)
             setThreads(threadData)
         })
 }
