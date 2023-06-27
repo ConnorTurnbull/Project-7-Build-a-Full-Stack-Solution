@@ -4,7 +4,8 @@ import { Form, Button } from 'react-bootstrap';
 function NewThreadHandler() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    
+    const [confirmation, setConfirmation] = useState(false)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -12,8 +13,18 @@ function NewThreadHandler() {
             method: 'POST', 
             body: JSON.stringify({ title, description }),
             headers: { 'Content-Type': 'application/json' }
-        }).then(res => res.json())
+        })
+        .then(res => res.json())
+        .then(setConfirmation(true))
         
+    }
+    
+    if (confirmation) {
+        return (
+
+            <p className="d-flex justify-content-center">New thread created!</p>
+
+        )
     }
 
     return (
