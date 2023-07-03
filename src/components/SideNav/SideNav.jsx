@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { getThreads } from "../../utilities";
 
 
-function SideNav({ session, setPosts, setThreadState, setDefaultState }) {
+function SideNav({ session, setPosts, threadState, setThreadState, setDefaultState }) {
     const [threads, setThreads] = useState([])
     const [selectThread, setSelectThread] = useState('')
 
@@ -19,26 +19,37 @@ function SideNav({ session, setPosts, setThreadState, setDefaultState }) {
     console.log(selectThread)
 
     //Fetch posts for individual threads:
-    
+
     function getPosts() {
 
-        fetch("//localhost:4200/api/auth/post?selectedthread=" + selectThread)
+        fetch("//localhost:4200/api/auth/post?selectedThread=" + selectThread)
             .then(data => {
                 return data.json()
             })
             .then(postData => {
                 setPosts(postData)
-               
+
             })
 
     }
 
     useEffect(() => {
-        getPosts()
-        setThreadState(true)
-        setDefaultState(false)
+        
+        if (!!selectThread) {
+            getPosts()
+            setThreadState(true)
+            setDefaultState(false)
+        }
+
     }, [selectThread])
 
+    useEffect(() => {
+
+        if (!threadState) {
+            setSelectThread('')
+        }
+
+    }, [threadState])
 
     return (
 

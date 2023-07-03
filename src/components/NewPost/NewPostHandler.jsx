@@ -5,7 +5,7 @@ function NewPostHandler() {
     const [selectedThread, setSelectedThread] = useState('')
     const [postTitle, setPostTitle] = useState('')
     const [text, setText] = useState('')
-    const [imageUrl, setImageUrl] = useState('')
+    const [imageUrl, setImageUrl] = useState({})
 
     const [confirmation, setConfirmation] = useState(false)
 
@@ -40,7 +40,10 @@ function NewPostHandler() {
 
     }
 
+    
+    
     if (confirmation) {
+        console.log(imageUrl)
         return (
 
             <p className="d-flex justify-content-center">New post created!</p>
@@ -72,7 +75,7 @@ function NewPostHandler() {
 
             <Form.Group className="mb-3">
                 <Form.Label>Upload image</Form.Label>
-                <Form.Control type="file" size="sm" onChange={(e) => setImageUrl(e.target.value)} />
+                <Form.Control type="file" size="sm" onChange={(e) => setImageUrl(e.target.files)} />
             </Form.Group>
 
             <Button className="d-grid mx-auto" variant="primary" type="submit" size="sm">

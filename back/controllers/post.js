@@ -1,14 +1,13 @@
 const Post = require('../models/post');
 
 exports.newPost = (req, res, next) => {
-    // const url = req.protocol + '://' + req.get('host');
+    // req.body = JSON.parse(req.body);
+    const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         selectedThread: req.body.selectedThread,
         postTitle: req.body.postTitle,
         text: req.body.text,
-        imageUrl: req.body.imageUrl,
-        likes: req.body.likes,
-        dislikes: req.body.dislikes,
+        imageUrl: url + '/images/' + req.body.imageUrl,
         userId: req.body.userId
     });
 
@@ -28,7 +27,11 @@ exports.newPost = (req, res, next) => {
 }
 
 exports.getPost = (req, res, next) => {
-    Post.find().then(
+  const options = {}
+  if (req.query.selectedThread) {
+    options.selectedThread = req.query.selectedThread
+  }
+  Post.find(options).then(
       (posts) => {
         return res.status(200).json(posts);
       }

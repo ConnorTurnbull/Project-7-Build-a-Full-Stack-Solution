@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Row, Container, Image, Stack, InputGroup, Form } from 'react-bootstrap';
 
 //Components:
+import BrowseThreads from './components/BrowseThreads/BrowseThreads';
 import ContentCard from './components/ContentCard/ContentCard';
 import DefaultView from './components/DefaultView/DefaultView';
 import HomeButton from './components/HomeButton/HomeButton';
@@ -23,11 +24,11 @@ import NewThreadPopup from './components/NewThread/NewThreadPopup';
 
 
 function App() {
-  const [defaultState, setDefaultState] = useState(true)  
+  const [defaultState, setDefaultState] = useState(true)
   const [searchState, setSearchState] = useState(false)
   const [threadState, setThreadState] = useState(false)
   const [authenticated, setAuthenticated] = useState(false)
-  
+
   const [session, setSession] = useState({})
   const [searchResults, setSearchResults] = useState([])
   const [posts, setPosts] = useState([])
@@ -58,9 +59,23 @@ function App() {
 
                 {/* Search Bar */}
 
-                <Col className="px-1 d-flex" sm={{ span: 5, offset: 1 }}>
+                <Col className="px-1 d-flex justify-content-center" sm={{ span: 4, offset: 0 }}>
 
                   <SearchBar
+
+                    setSearchResults={setSearchResults}
+                    setSearchState={setSearchState}
+                    setDefaultState={setDefaultState}
+
+                  />
+
+                </Col>
+
+                {/* Browse All Threads */}
+
+                <Col className="px-1 d-flex justify-content-center" sm={{ span: 2, offset: 0 }} >
+
+                  <BrowseThreads
 
                     setSearchResults={setSearchResults}
                     setSearchState={setSearchState}
@@ -73,7 +88,7 @@ function App() {
                 {/* New Thread */}
 
                 <Col className="px-1 d-flex justify-content-center" sm={{ span: 1, offset: 1 }}>
-                  
+
                   <NewThreadPopup />
 
                 </Col>
@@ -81,7 +96,7 @@ function App() {
                 {/* New Post */}
 
                 <Col className='px-1 d-flex justify-content-center' sm={{ span: 1, offset: 0 }}>
-                  
+
                   <NewPostPopup />
 
                 </Col>
@@ -94,6 +109,9 @@ function App() {
 
                     setAuthenticated={setAuthenticated}
                     setSearchResults={setSearchResults}
+                    setSearchState={setSearchState}
+                    setThreadState={setThreadState}
+                    setDefaultState={setDefaultState}
 
                   />
 
@@ -117,7 +135,7 @@ function App() {
                 setDefaultState={setDefaultState}
                 setThreadState={setThreadState}
                 setSearchState={setSearchState}
-              
+
               />
 
               <div className='nav-divider d-flex'></div>
@@ -125,6 +143,7 @@ function App() {
               <SideNav
 
                 session={session}
+                threadState={threadState}
                 setThreadState={setThreadState}
                 setDefaultState={setDefaultState}
                 setPosts={setPosts}
@@ -136,12 +155,12 @@ function App() {
             {/* Main Container */}
 
             <Col className='content-window-logged d-flex justify-content-center bg-light p-5' sm={10}>
-              
+
               <main>
 
                 {defaultState ? <DefaultView /> : null}
                 {searchState ? <SearchResultCard searchResults={searchResults} /> : null}
-                {threadState ? <ContentCard posts={posts}/> : null}
+                {threadState ? <ContentCard posts={posts} /> : null}
 
               </main>
 

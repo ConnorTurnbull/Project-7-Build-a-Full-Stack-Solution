@@ -2,9 +2,27 @@ something weird going on with states -
     sidenav is setting thread state on render but shouldn't be.
     problem to do with map?
 
-don't know how to do backend for subscribe feature
+    wrapped use effects in if statements to prevent them being triggered on render.
 
 individual thread fetch not working. 
     Call is not correct, don't know how to correct it.
     Calling all posts instead of filtering per thread.
 
+    added req to thread controller 
+
+First thread button not always working
+    doesn't work until second button clicked, then works fine
+
+    component state not being cleared on page state change. Implemented state reset to fix issue.
+
+
+
+
+don't know how to do backend for subscribe feature
+multer - can't be stringified json, need to use form data to upload images
+browse all threads button
+package props together?
+
+next week:
+get multer working
+subscribe function working

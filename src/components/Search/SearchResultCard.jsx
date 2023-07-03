@@ -9,6 +9,9 @@ function SearchResultCard({ searchResults }) {
 
     return (
         <Row className="gy-3 active-popup">
+            <p className="text-center m-0">Search Results</p>
+            <div className='nav-divider d-flex'></div>
+
             {Array.isArray(searchResults) ? searchResults.map(thread => (
                 <>
                     <Col sm={6} className=" d-flex justify-content-center ">
