@@ -6,7 +6,7 @@ exports.newPost = (req, res, next) => {
     const post = new Post({
         selectedThread: req.body.selectedThread,
         postTitle: req.body.postTitle,
-        text: req.body.text,
+        text: req.body.postText,
         imageUrl: url + '/images/' + req.body.imageUrl,
         userId: req.body.userId
     });

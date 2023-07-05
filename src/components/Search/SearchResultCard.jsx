@@ -29,7 +29,7 @@ function SearchResultCard({ searchResults }) {
                                     <Col className='d-flex justify-content-center align-items-center' sm={{ span: 3 }}>
 
                                         <SubscriptionHandler thread={thread} searchResults={searchResults} />
-                                            
+
                                     </Col>
 
                                 </Row>

@@ -34,9 +34,9 @@ function App() {
   const [posts, setPosts] = useState([])
 
 
-  console.log("Default State " + defaultState)
-  console.log("Search State " + searchState)
-  console.log("Thread State " + threadState)
+  console.log("Default State" + defaultState)
+  console.log("Search State" + searchState)
+  console.log("Thread State" + threadState)
 
   //User logged in
 
@@ -73,7 +73,7 @@ function App() {
 
                 {/* Browse All Threads */}
 
-                <Col className="px-1 d-flex justify-content-center" sm={{ span: 2, offset: 0 }} >
+                <Col className="px-1 d-flex justify-content-start" sm={{ span: 2, offset: 0 }} >
 
                   <BrowseThreads
 

@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
 
 function NewPostHandler() {
+    
     const [selectedThread, setSelectedThread] = useState('')
     const [postTitle, setPostTitle] = useState('')
-    const [text, setText] = useState('')
+    const [postText, setPostText] = useState('')
     const [imageUrl, setImageUrl] = useState({})
+
 
     const [confirmation, setConfirmation] = useState(false)
 
     const [threads, setThreads] = useState([])
+
+
+    //Get all threads for drop-down menu
 
     const getThreads = async () => {
 
@@ -23,27 +28,34 @@ function NewPostHandler() {
             })
     }
 
+
     useEffect(() => {
         getThreads()
     }, [])
 
+
+    //New post submission handler
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        
+        const formData = new FormData()
+        formData.append("selectedThread", selectedThread)
+        formData.append("postTitle", postTitle)
+        formData.append("postText", postText)
+        formData.append("imageUrl", imageUrl)
+        
         fetch("//localhost:4200/api/auth/post", {
             method: 'POST',
-            body: JSON.stringify({ selectedThread, postTitle, text, imageUrl }),
-            headers: { 'Content-Type': 'application/json' }
+            body: formData,
         })
             .then(res => res.json())
             .then(setConfirmation(true))
 
     }
 
-    
-    
+
     if (confirmation) {
-        console.log(imageUrl)
         return (
 
             <p className="d-flex justify-content-center">New post created!</p>
@@ -52,10 +64,11 @@ function NewPostHandler() {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form id="form" onSubmit={handleSubmit}>
+
             <Form.Group className="mb-3">
-                <Form.Label htmlFor="select">Which thread is this post for?</Form.Label>
-                <Form.Select id="select" size="sm" onChange={(e) => setSelectedThread(e.target.value)}>
+                <Form.Label htmlFor="selectedThread">Which thread is this post for?</Form.Label>
+                <Form.Select id="selectedThread" size="sm" onChange={(e) => setSelectedThread(e.target.value)}>
                     <option>Choose a thread</option>
                     {threads.map(thread => (
                         <option value={thread._id} key={thread._id}>{thread.title}</option>
@@ -70,12 +83,12 @@ function NewPostHandler() {
 
             <Form.Group className="mb-3">
                 <Form.Label>Enter text here</Form.Label>
-                <Form.Control as="textarea" placeholder="Enter some text for your post" rows={5} size="sm" onChange={(e) => setText(e.target.value)} />
+                <Form.Control as="textarea" placeholder="Enter some text for your post" rows={5} size="sm" onChange={(e) => setPostText(e.target.value)} />
             </Form.Group>
 
             <Form.Group className="mb-3">
                 <Form.Label>Upload image</Form.Label>
-                <Form.Control type="file" size="sm" onChange={(e) => setImageUrl(e.target.files)} />
+                <Form.Control type="file" size="sm" onChange={(e) => setImageUrl(e.target.files[0])} />
             </Form.Group>
 
             <Button className="d-grid mx-auto" variant="primary" type="submit" size="sm">
