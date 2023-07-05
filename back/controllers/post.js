@@ -1,13 +1,12 @@
 const Post = require('../models/post');
 
 exports.newPost = (req, res, next) => {
-    // req.body = JSON.parse(req.body);
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         selectedThread: req.body.selectedThread,
         postTitle: req.body.postTitle,
         text: req.body.postText,
-        imageUrl: url + '/images/' + req.body.imageUrl,
+        imageUrl: url + '/images/' + req.file.filename,
         userId: req.body.userId
     });
 
