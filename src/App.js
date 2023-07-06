@@ -80,6 +80,7 @@ function App() {
                     setSearchResults={setSearchResults}
                     setSearchState={setSearchState}
                     setDefaultState={setDefaultState}
+                    setThreadState={setThreadState}
 
                   />
 
@@ -146,6 +147,7 @@ function App() {
                 threadState={threadState}
                 setThreadState={setThreadState}
                 setDefaultState={setDefaultState}
+                setSearchResults={setSearchResults}
                 setPosts={setPosts}
 
               />

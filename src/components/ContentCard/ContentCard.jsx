@@ -6,9 +6,9 @@ function ContentCard({ posts }) {
     return (
         <Row className="gy-3 active-popup">
             {Array.isArray(posts) ? posts.map(posts => (
-                <Col sm={6} className=" d-flex justify-content-center ">
-                    <Card  style={{ width: '20rem' }}>
-                        <Card.Img variant="top" src={posts.imageUrl}/>
+                <Col sm={6} className=" d-flex justify-content-center g-5">
+                    <Card border='secondary' style={{ width: '20rem' }}>
+                        <Card.Img className="img-fluid" style={{ height: '75%' }} variant="top" src={posts.imageUrl}/>
                         <Card.Body>
                             <Card.Title>{posts.postTitle}</Card.Title>
                             <Card.Text>

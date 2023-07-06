@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from 'react-bootstrap'
 
-function BrowseThreads({ setSearchResults, setDefaultState, setSearchState }) {
+function BrowseThreads({ setSearchResults, setDefaultState, setSearchState, setThreadState }) {
 
     const queryThreads = async => {
         fetch("//localhost:4200/api/auth/thread")
@@ -13,6 +13,7 @@ function BrowseThreads({ setSearchResults, setDefaultState, setSearchState }) {
                 setSearchResults(threadData)
                 setSearchState(true)
                 setDefaultState(false)
+                setThreadState(false)
             })
     }
 

@@ -1,39 +1,27 @@
-something weird going on with states - 
-    - sidenav is setting thread state on render but shouldn't be.
-    - problem to do with map?
-
-     -wrapped use effects in if statements to prevent them being triggered on render.
-
-individual thread fetch not working. 
-    - Call is not correct, don't know how to correct it.
-    - Calling all posts instead of filtering per thread.
-
-    added req to thread controller 
-
-First thread button not always working
-    - doesn't work until second button clicked, then works fine
-
-    - component state not being cleared on page state change. Implemented state reset to fix issue.
-
 browse all threads button added
 
 re-written new post submission handler
     - used form data rather than json for form submission
     - just need to make back end tweaks as currently 500'ing
+    - back end adjusted
+    - multer config adjusted to correct file names
 
+content card appearance fixed
+    - image height set to 75%
 
+fixed browse all state clash
+    - hadn't set thread state to false
 
+fixed side nav state issue
+    - hadn't set search results state to false
 
 don't know how to do backend for subscribe feature
 promise.all?
 
-get multer working
-
-
 next week:
 subscribe function working
 
-fix browse all state clash
+fix content card appearance
 
 crud settings for posts/threads to allow for unread posts
 update threads with last seen datestamp
@@ -41,3 +29,9 @@ object.keys returns array of key value pairs from object
 
 account deletion
 
+delete posts
+
+
+Questions:
+
+where do we stand with alt text for images?
