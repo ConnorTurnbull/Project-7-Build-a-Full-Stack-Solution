@@ -9,6 +9,7 @@ import DefaultView from './components/DefaultView/DefaultView';
 import HomeButton from './components/HomeButton/HomeButton';
 import Login from './components/Login/LoginPopup';
 import Logout from './components/Logout/Logout';
+import PostView from './components/PostVIew/PostView';
 import SideNav from './components/SideNav/SideNav';
 import SignUp from './components/SignUp/SignUpPopup';
 import SearchBar from './components/Search/SearchBar';
@@ -27,6 +28,7 @@ function App() {
   const [defaultState, setDefaultState] = useState(true)
   const [searchState, setSearchState] = useState(false)
   const [threadState, setThreadState] = useState(false)
+  const [postState, setPostState] = useState(false)
   const [authenticated, setAuthenticated] = useState(false)
 
   const [session, setSession] = useState({})
@@ -113,6 +115,7 @@ function App() {
                     setSearchState={setSearchState}
                     setThreadState={setThreadState}
                     setDefaultState={setDefaultState}
+                    session={session}
 
                   />
 
@@ -147,6 +150,7 @@ function App() {
                 threadState={threadState}
                 setThreadState={setThreadState}
                 setDefaultState={setDefaultState}
+                setSearchState={setSearchState}
                 setSearchResults={setSearchResults}
                 setPosts={setPosts}
 
@@ -158,12 +162,13 @@ function App() {
 
             <Col className='content-window-logged d-flex justify-content-center bg-light p-5' sm={10}>
 
-              <main>
+              <main className='w-100'>
 
                 {defaultState ? <DefaultView /> : null}
                 {searchState ? <SearchResultCard searchResults={searchResults} /> : null}
                 {threadState ? <ContentCard posts={posts} /> : null}
-
+                {postState ? <PostView /> : null}
+                
               </main>
 
             </Col>

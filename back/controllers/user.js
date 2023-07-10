@@ -2,7 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-exports.signup = ( req, res, next ) => {
+exports.signup = (req, res, next) => {
     console.log(req.body)
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
@@ -24,14 +24,14 @@ exports.signup = ( req, res, next ) => {
                 }
             );
         }
-    ).catch( error => {
+    ).catch(error => {
         res.status(500).json({
             error: error, message: 'bcrypt hash failed'
         })
     })
 };
 
-exports.login = ( req, res, next ) => {
+exports.login = (req, res, next) => {
     console.log(req.body)
 
     User.findOne({ email: req.body.email }).then(
@@ -48,10 +48,10 @@ exports.login = ( req, res, next ) => {
                             error: new Error('Incorrect Password!')
                         });
                     }
-                    const token =jwt.sign(
-                        { userId: user._id},
+                    const token = jwt.sign(
+                        { userId: user._id },
                         'RANDOM_TOKEN_SECRET',
-                        { expiresIn: '24h'});
+                        { expiresIn: '24h' });
                     res.status(200).json({
                         userId: user._id,
                         token: token
@@ -73,3 +73,28 @@ exports.login = ( req, res, next ) => {
         }
     );
 };
+
+exports.delete = (req, res, next) => {
+    User.findOne({ userId: req.body.userId }).then(
+        (user) => {
+            if(!user) {
+                return res.status(404).json({
+                    error: new Error('User not found!')
+                });
+            }
+        },
+        User.deleteOne({ userId: req.body.userId }).then(
+            () => {
+                res.status(200).json({
+                    message: "User Deleted!"
+                });
+            }
+        ).catch(
+            (error) => {
+              res.status(400).json({
+                error: error
+              });
+            }
+        )    
+    )
+}

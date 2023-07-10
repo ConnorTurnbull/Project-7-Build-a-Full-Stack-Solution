@@ -5,6 +5,9 @@ function ContentCard({ posts }) {
 
     return (
         <Row className="gy-3 active-popup">
+            <p className="text-center m-0">Thread title placeholder</p>
+            <div className="nav-divider d-flex mt-2"></div>
+            
             {Array.isArray(posts) ? posts.map(posts => (
                 <Col sm={6} className=" d-flex justify-content-center g-5">
                     <Card border='secondary' style={{ width: '20rem' }}>

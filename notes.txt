@@ -8,30 +8,49 @@ re-written new post submission handler
 
 content card appearance fixed
     - image height set to 75%
+    - single post appears odd but multiple is fine
 
-fixed browse all state clash
-    - hadn't set thread state to false
+fixed state clashes
 
-fixed side nav state issue
-    - hadn't set search results state to false
+fixed content display area title/border area
 
-don't know how to do backend for subscribe feature
-promise.all?
+started account delete
+    - not sure on anything backend
+    - errors out every time (HTTP errors?)
 
-next week:
+
+
+To do:
+
 subscribe function working
-
-fix content card appearance
+    don't know how to do backend for subscribe feature
+    promise.all?
 
 crud settings for posts/threads to allow for unread posts
 update threads with last seen datestamp
 object.keys returns array of key value pairs from object
 
 account deletion
+ -user.destroy?
 
-delete posts
+delete posts?
+
+get auth working
+
+view all posts from subbed threads on home state
+
+comments section
+
+post sorting in all views
+
+Success message on sign up window + auto sign in
+
+Env variables
+
+Fix user threads
+    - Same threads displaying for all users
 
 
 Questions:
 
-where do we stand with alt text for images?
+where do we stand with alt text for user submitted images?
