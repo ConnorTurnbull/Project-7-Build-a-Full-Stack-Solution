@@ -32,9 +32,6 @@ crud settings for posts/threads to allow for unread posts
 update threads with last seen datestamp
 object.keys returns array of key value pairs from object
 
-account deletion
- -user.destroy?
-
 delete posts?
 
 get auth working
@@ -54,6 +51,8 @@ Fix user threads
 
 Fix page height
 
+Fix delete account Dropdown
+ - staying open
 
 
 Questions:

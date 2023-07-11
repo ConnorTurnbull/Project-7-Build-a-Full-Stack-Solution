@@ -75,26 +75,32 @@ exports.login = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    User.findOne({ userId: req.body.userId }).then(
+    User.findOne({ _id: req.body.userId }).then(
         (user) => {
-            if(!user) {
+            if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
                 });
             }
-        },
-        User.deleteOne({ userId: req.body.userId }).then(
-            () => {
-                res.status(200).json({
-                    message: "User Deleted!"
-                });
-            }
-        ).catch(
-            (error) => {
-              res.status(400).json({
+            User.deleteOne({ _id: req.body.userId }).then(
+                () => {
+                    res.status(200).json({
+                        message: "User Deleted!"
+                    });
+                }
+            ).catch(
+                (error) => {
+                    res.status(400).json({
+                        error: error
+                    });
+                }
+            )
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({
                 error: error
-              });
-            }
-        )    
+            });
+        }
     )
 }

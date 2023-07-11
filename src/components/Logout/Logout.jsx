@@ -7,12 +7,14 @@ const Logout = ({
     setSearchState,
     setThreadState,
     setDefaultState,
+    setPostState,
     session }) => {
 
     function LogoutHandler() {
         setAuthenticated(false)
         setSearchState(false)
         setThreadState(false)
+        setPostState(false)
         setDefaultState(true)
         setSearchResults('')
         sessionStorage.clear()
@@ -28,9 +30,9 @@ const Logout = ({
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json())
 
-        // .then(
-        //     LogoutHandler
-        // )
+        .then(
+            LogoutHandler
+        )
     }
 
     return (
@@ -40,7 +42,7 @@ const Logout = ({
                 Log Out
             </Button>
 
-            <Dropdown.Toggle split variant="light" id="dropdown-split-basic"></Dropdown.Toggle>
+            <Dropdown.Toggle split title="dropdown-button" variant="light" id="dropdown-split-basic" ></Dropdown.Toggle>
 
             <Dropdown.Menu className="p-0 d-flex justify-content-center">
 

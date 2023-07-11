@@ -120,6 +120,7 @@ function App() {
                     setSearchState={setSearchState}
                     setThreadState={setThreadState}
                     setDefaultState={setDefaultState}
+                    setPostState={setPostState}
                     session={session}
 
                   />
