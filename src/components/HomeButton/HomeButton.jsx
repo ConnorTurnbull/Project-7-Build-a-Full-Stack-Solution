@@ -2,12 +2,13 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { House } from "react-bootstrap-icons"
 
-function HomeButton({ setDefaultState, setThreadState, setSearchState, }) {
+function HomeButton({ setDefaultState, setThreadState, setSearchState, setPostState }) {
 
     function Home() {
         setDefaultState(true)
         setThreadState(false)
         setSearchState(false)
+        setPostState(false)
     }
 
     return (

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { getThreads } from "../../utilities";
 
 
-function SideNav({ session, setPosts, setSearchResults, threadState, setThreadState, setDefaultState, setSearchState }) {
+function SideNav({ session, setPosts, setSearchResults, threadState, setThreadState, setDefaultState, setSearchState, setPostState }) {
     const [threads, setThreads] = useState([])
     const [selectThread, setSelectThread] = useState('')
 
@@ -39,6 +39,7 @@ function SideNav({ session, setPosts, setSearchResults, threadState, setThreadSt
             setThreadState(true)
             setDefaultState(false)
             setSearchState(false)
+            setPostState(false)
         }
 
     }, [selectThread])

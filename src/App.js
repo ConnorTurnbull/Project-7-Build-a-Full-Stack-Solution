@@ -34,11 +34,15 @@ function App() {
   const [session, setSession] = useState({})
   const [searchResults, setSearchResults] = useState([])
   const [posts, setPosts] = useState([])
+  const [singlePost, setSinglePost] = useState({})
+
 
 
   console.log("Default State" + defaultState)
   console.log("Search State" + searchState)
   console.log("Thread State" + threadState)
+  console.log("Post State" + postState)
+  console.log(singlePost)
 
   //User logged in
 
@@ -83,6 +87,7 @@ function App() {
                     setSearchState={setSearchState}
                     setDefaultState={setDefaultState}
                     setThreadState={setThreadState}
+                    setPostState={setPostState}
 
                   />
 
@@ -139,6 +144,7 @@ function App() {
                 setDefaultState={setDefaultState}
                 setThreadState={setThreadState}
                 setSearchState={setSearchState}
+                setPostState={setPostState}
 
               />
 
@@ -151,8 +157,10 @@ function App() {
                 setThreadState={setThreadState}
                 setDefaultState={setDefaultState}
                 setSearchState={setSearchState}
+                setPostState={setPostState}
                 setSearchResults={setSearchResults}
                 setPosts={setPosts}
+
 
               />
 
@@ -165,10 +173,30 @@ function App() {
               <main className='w-100'>
 
                 {defaultState ? <DefaultView /> : null}
-                {searchState ? <SearchResultCard searchResults={searchResults} /> : null}
-                {threadState ? <ContentCard posts={posts} /> : null}
-                {postState ? <PostView /> : null}
-                
+
+                {searchState ? <SearchResultCard
+
+                  searchResults={searchResults}
+
+                /> : null}
+
+                {threadState ? <ContentCard
+
+                  posts={posts}
+                  setPostState={setPostState}
+                  setThreadState={setThreadState}
+                  setDefaultState={setDefaultState}
+                  setSearchState={setSearchState}
+                  setSinglePost={setSinglePost}
+
+                /> : null}
+
+                {postState ? <PostView 
+
+                  singlePost={singlePost}
+
+                /> : null}
+
               </main>
 
             </Col>

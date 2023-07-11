@@ -18,6 +18,8 @@ started account delete
     - not sure on anything backend
     - errors out every time (HTTP errors?)
 
+Started individual post state
+
 
 
 To do:
@@ -50,7 +52,15 @@ Env variables
 Fix user threads
     - Same threads displaying for all users
 
+Fix page height
+
+
 
 Questions:
 
 where do we stand with alt text for user submitted images?
+why don't onclick behaviors work in arrayed components?
+
+
+
+How to go about extending course. No way this is going to be ready in time + doing presentations in 4 weeks
