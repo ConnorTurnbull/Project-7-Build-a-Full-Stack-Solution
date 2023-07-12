@@ -1,27 +1,49 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { Row, Col, Card } from 'react-bootstrap';
 
-function PostView({ singlePost }) {
+
+
+function PostView({ postId }) {
+    const [singlePost, setSinglePost] = useState({})
+
+    // console.log(postId)
+
+    function getPost() {
+        fetch("//localhost:4200/api/auth/post?_id=" + postId)
+            .then(data => {
+                return data.json()
+            })
+            .then(postData => {
+                setSinglePost(postData)
+                console.log(singlePost)
+            })
+    }
+
+    useEffect(() => {
+
+        getPost()
+
+    }, [])
 
     return (
 
         <Row className="gy-3 active-popup justify-content-center">
-            
+
             <p className="text-center m-0">Post view placeholder</p>
             <div className="nav-divider d-flex mt-2"></div>
 
             <Col sm={6} className=" d-flex justify-content-center g-5">
                 <Card border='secondary' style={{ width: '20rem' }}>
-                    <Card.Img className="img-fluid" style={{ height: '75%' }} variant="top" src='' />
+                    <Card.Img className="img-fluid" style={{ height: '75%' }} variant="top" src={singlePost.imageUrl} />
                     <Card.Body>
-                        <Card.Title>{singlePost.title}</Card.Title>
+                        <Card.Title>{singlePost.postTitle}</Card.Title>
                         <Card.Text>
                             {singlePost.text}
                         </Card.Text>
                     </Card.Body>
                 </Card>
             </Col>
-        
+
         </Row>
     )
 }

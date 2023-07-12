@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 const Logout = ({
     setAuthenticated,
@@ -42,14 +43,14 @@ const Logout = ({
                 Log Out
             </Button>
 
-            <Dropdown.Toggle split title="dropdown-button" variant="light" id="dropdown-split-basic" ></Dropdown.Toggle>
-
-            <Dropdown.Menu className="p-0 d-flex justify-content-center">
-
+            <Dropdown.Toggle split title="dropdown-button" variant="light" ></Dropdown.Toggle>
+            
+            <Dropdown.Menu className="p-0 d-flex justify-content-center" >
+                
                 <Button className="w-100" variant="light" onClick={DeleteHandler}>
                     Delete Account
                 </Button>
-
+                
             </Dropdown.Menu>
 
         </Dropdown>

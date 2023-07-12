@@ -9,7 +9,7 @@ import DefaultView from './components/DefaultView/DefaultView';
 import HomeButton from './components/HomeButton/HomeButton';
 import Login from './components/Login/LoginPopup';
 import Logout from './components/Logout/Logout';
-import PostView from './components/PostVIew/PostView';
+import PostView from './components/PostView/PostView';
 import SideNav from './components/SideNav/SideNav';
 import SignUp from './components/SignUp/SignUpPopup';
 import SearchBar from './components/Search/SearchBar';
@@ -34,7 +34,7 @@ function App() {
   const [session, setSession] = useState({})
   const [searchResults, setSearchResults] = useState([])
   const [posts, setPosts] = useState([])
-  const [singlePost, setSinglePost] = useState({})
+  const [postId, setPostId] = useState('')
 
 
 
@@ -42,7 +42,8 @@ function App() {
   console.log("Search State" + searchState)
   console.log("Thread State" + threadState)
   console.log("Post State" + postState)
-  console.log(singlePost)
+
+  
 
   //User logged in
 
@@ -188,13 +189,13 @@ function App() {
                   setThreadState={setThreadState}
                   setDefaultState={setDefaultState}
                   setSearchState={setSearchState}
-                  setSinglePost={setSinglePost}
+                  setPostId={setPostId}
 
                 /> : null}
 
                 {postState ? <PostView 
 
-                  singlePost={singlePost}
+                  postId={postId}
 
                 /> : null}
 

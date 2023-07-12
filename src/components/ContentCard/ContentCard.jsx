@@ -1,29 +1,16 @@
 import { React, useState, useEffect } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap"
 
-function ContentCard({ posts, setPostState, setDefaultState, setSearchState, setThreadState, setSinglePost }) {
-    const [postId, setPostId] = useState('')
+function ContentCard({ posts, setPostState, setDefaultState, setSearchState, setThreadState, setPostId }) {
     
-    function getPost() {
-        fetch("//localhost:4200/api/auth/post?_id=" + postId)
-            .then(data => {
-                return data.json()
-            })
-            .then(() => {
-                setPostState(true)
-                setSearchState(false)
-                setDefaultState(false)
-                setThreadState(false)
-            })
+    function setPostView() {
+        
+        setPostState(true)
+        setSearchState(false)
+        setDefaultState(false)
+        setThreadState(false)
+        
     }
-
-    useEffect(() => {
-
-        if (postId) {
-            getPost()
-        }
-
-    }, [postId])
 
     return (
         <Row className="gy-3 active-popup">
@@ -39,7 +26,7 @@ function ContentCard({ posts, setPostState, setDefaultState, setSearchState, set
                             <Card.Text>
                                 {posts.text}
                             </Card.Text>
-                            <Button variant="link" className="p-0" size="sm" onClick={() => setPostId(posts._id)}>
+                            <Button variant="link" className="p-0" size="sm" onClick={() => {setPostId(posts._id); setPostView()}}>
                                 View Post
                             </Button>
                         </Card.Body>
