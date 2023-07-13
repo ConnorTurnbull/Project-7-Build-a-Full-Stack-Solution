@@ -21,7 +21,7 @@ function SideNav({ session, setPosts, setSearchResults, threadState, setThreadSt
 
     function getPosts() {
 
-        fetch("//localhost:4200/api/auth/post?selectedThread=" + selectThread)
+        fetch("//localhost:4200/api/auth/posts?selectedThread=" + selectThread)
             .then(data => {
                 return data.json()
             })

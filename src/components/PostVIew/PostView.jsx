@@ -6,16 +6,16 @@ import { Row, Col, Card } from 'react-bootstrap';
 function PostView({ postId }) {
     const [singlePost, setSinglePost] = useState({})
 
-    // console.log(postId)
+    console.log(postId)
 
     function getPost() {
-        fetch("//localhost:4200/api/auth/post?_id=" + postId)
+        fetch("//localhost:4200/api/auth/post?id=" + postId)
             .then(data => {
                 return data.json()
             })
             .then(postData => {
                 setSinglePost(postData)
-                console.log(singlePost)
+                console.log(postData)
             })
     }
 
@@ -26,25 +26,28 @@ function PostView({ postId }) {
     }, [])
 
     return (
+        <>
+            <Row className="gy-3 active-popup justify-content-center">
 
-        <Row className="gy-3 active-popup justify-content-center">
+                <p className="text-center m-0 fw-bold">{singlePost.postTitle}</p>
+                <div className="nav-divider d-flex mt-2"></div>
 
-            <p className="text-center m-0">Post view placeholder</p>
-            <div className="nav-divider d-flex mt-2"></div>
+                <Col sm={6} className="d-flex justify-content-center">
+                    <Card className="mb-3" border='secondary' style={{ width: '30rem', height: '20rem' }}>
+                        <Card.Img className="img-fluid" style={{ height: '100%' }} src={singlePost.imageUrl} />
+                    </Card>
+                </Col>
 
-            <Col sm={6} className=" d-flex justify-content-center g-5">
-                <Card border='secondary' style={{ width: '20rem' }}>
-                    <Card.Img className="img-fluid" style={{ height: '75%' }} variant="top" src={singlePost.imageUrl} />
-                    <Card.Body>
-                        <Card.Title>{singlePost.postTitle}</Card.Title>
-                        <Card.Text>
-                            {singlePost.text}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
+            </Row>
 
-        </Row>
+            <Row className="gy-3 active-popup justify-content-center">
+                <Col sm={10} className="d-flex justify-content-center">
+                    <Card border='secondary' style={{ width: '30rem' }}>
+                        <Card.Text>{singlePost.text} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis cumque, ut officiis molestias asperiores corporis eos illo unde sit fugiat repellat odio voluptate laborum dolores velit a ipsam sed dolorum corrupti. Debitis quo omnis enim rerum ut molestiae beatae dicta odio deleniti rem repellat itaque, minus aperiam delectus, porro assumenda?</Card.Text>
+                    </Card>
+                </Col>
+            </Row>
+        </>
     )
 }
 
