@@ -166,6 +166,8 @@ function App() {
 
               />
 
+              <div className='nav-divider d-flex my-3'></div>
+
             </Col>
 
             {/* Main Container */}
@@ -174,7 +176,15 @@ function App() {
 
               <main className='w-100'>
 
-                {defaultState ? <DefaultView /> : null}
+                {defaultState ? <DefaultView 
+                  
+                  setPostId={setPostId}
+                  setPostState={setPostState}
+                  setThreadState={setThreadState}
+                  setDefaultState={setDefaultState}
+                  setSearchState={setSearchState}
+                  
+                /> : null}
 
                 {searchState ? <SearchResultCard
 
@@ -261,7 +271,7 @@ function App() {
 
       <Container fluid className="main-container">
         <Row>
-          <Col className='content-window d-flex bg-light' sm={12}>
+          <Col className='content-window-landing d-flex bg-light' sm={12}>
             <Stack className='justify-content-center' gap={2}>
 
               <Image fluid className='mx-5' src={MainLogo} />

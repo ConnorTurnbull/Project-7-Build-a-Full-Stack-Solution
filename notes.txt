@@ -1,28 +1,19 @@
-browse all threads button added
+DONE:
 
-re-written new post submission handler
-    - used form data rather than json for form submission
-    - just need to make back end tweaks as currently 500'ing
-    - back end adjusted
-    - multer config adjusted to correct file names
-
-content card appearance fixed
-    - image height set to 75%
-    - single post appears odd but multiple is fine
-
-fixed state clashes
-
-fixed content display area title/border area
-
-started account delete
-    - not sure on anything backend
-    - errors out every time (HTTP errors?)
+Account delete finished
 
 Started individual post state
+    - need to add comment functionality
+    - backend to do
+
+Page display fixes
+
+Added all posts to default view
+    - could later be changed to popular posts
 
 
 
-To do:
+TO DO:
 
 subscribe function working
     don't know how to do backend for subscribe feature
@@ -36,8 +27,6 @@ delete posts?
 
 get auth working
 
-view all posts from subbed threads on home state
-
 comments section
 
 post sorting in all views
@@ -49,16 +38,11 @@ Env variables
 Fix user threads
     - Same threads displaying for all users
 
-Fix page height
-
 Fix delete account Dropdown
  - staying open
 
 
-Questions:
-
-where do we stand with alt text for user submitted images?
-why don't onclick behaviors work in arrayed components?
+QUESTIONS:
 
 
 

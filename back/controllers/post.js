@@ -1,13 +1,14 @@
 const Post = require('../models/post');
 
-exports.newPost = (req, res, next) => {
+exports.newPost = ( req, res, next ) => {
   const url = req.protocol + '://' + req.get('host');
   const post = new Post({
     selectedThread: req.body.selectedThread,
     postTitle: req.body.postTitle,
     text: req.body.postText,
     imageUrl: url + '/images/' + req.file.filename,
-    userId: req.body.userId
+    userId: req.body.userId,
+    comments: req.body.comments
   });
 
   post.save().then(
@@ -25,7 +26,7 @@ exports.newPost = (req, res, next) => {
   );
 }
 
-exports.getPosts = (req, res, next) => {
+exports.getPosts = ( req, res, next ) => {
   const options = {}
   if (req.query.selectedThread) {
     options.selectedThread = req.query.selectedThread
@@ -43,7 +44,7 @@ exports.getPosts = (req, res, next) => {
   );
 };
 
-exports.getSinglePost = (req, res, next) => {
+exports.getSinglePost = ( req, res, next ) => {
   Post.findOne({
     _id: req.query.id,
   }).then(
@@ -58,3 +59,23 @@ exports.getSinglePost = (req, res, next) => {
     }
   );
 };
+
+exports.getAllPosts = ( req, res, next ) => {
+  Post.find().then(
+    (posts) => {
+      return res.status(200).json(posts);
+    }
+  ).catch(
+    (error) => {
+      return res.status(400).json({
+        error: error
+      });
+    }
+  );
+}
+
+exports.newComment = ( req, res, next ) => {
+  Post.fineOne({
+    _id: req.body.id
+  })
+}
