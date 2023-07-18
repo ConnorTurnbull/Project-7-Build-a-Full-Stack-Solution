@@ -2,7 +2,7 @@ const Thread = require('../models/thread');
 const User = require('../models/user');
 
 exports.newThread = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   // req.body.thread = JSON.parse(req.body.thread);
 
 
@@ -32,12 +32,12 @@ exports.getThread = async (req, res, next) => {
   if (req.query.userId) {
     const userThreads = await User.findOne().then(
       (user) => {
-        console.log(user)
+        // console.log(user)
         return user.threads
       }
     )
     if (!userThreads || !userThreads.length) {
-      console.log(userThreads)
+      // console.log(userThreads)
       return res.status(404).json({
         message: 'No threads found'
       })
@@ -47,11 +47,11 @@ exports.getThread = async (req, res, next) => {
   else if (req.query.title) {
     options.title = { $regex: new RegExp(req.query.title, "i") }
   }
-  console.log(options)
+  // console.log(options)
 
   Thread.find(options).then(
     (threads) => {
-      console.log(threads)
+      // console.log(threads)
       return res.status(200).json(threads);
     }
   ).catch(
@@ -64,24 +64,46 @@ exports.getThread = async (req, res, next) => {
 };
 
 // DOESN'T WORK
-exports.subscribe = (req, res, next) => {
+exports.subscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
-
-  Thread.find(threadId)
-    .then(
-      Thread.usersSubscribed.save(userId)
-    ).then(
-      () => {
-        res.status(201).json({
-          message: "subscribed"
-        });
+  console.log(threadId, userId)
+  
+  const thread = await Thread.findOne({_id: threadId})
+    .then(async (thread) => {
+      if (thread.usersSubscribed.includes(userId)) {
+        return thread
       }
-    ).catch(
+      thread.usersSubscribed.push(userId)
+      const saved = await thread.save()
+        .then(
+          () => {
+            return true
+          }
+        ).catch(
+          (error) => {
+            res.status(400).json({
+              error: error
+            });
+            return false
+          }
+        );
+      if (saved) {
+        return thread
+      } else {
+        return null
+      }
+    }).catch(
       (error) => {
-        return res.status(400).json({
+        res.status(404).json({
           error: error
         });
+        return null
       }
     );
+    console.log(thread)
+    if (!thread) {
+      return
+    }
+
 }

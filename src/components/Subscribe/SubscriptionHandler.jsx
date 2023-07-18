@@ -19,6 +19,7 @@ function SubscriptionHandler({ searchResults, thread, session }) {
         fetch("//localhost:4200/api/auth/thread/subscribe", {
             method: 'PATCH', 
             body: JSON.stringify({ threadId, userId }),
+            headers: {"Content-Type" : "application/json"}
         })
         .then(res => res.json())
 
@@ -34,7 +35,7 @@ function SubscriptionHandler({ searchResults, thread, session }) {
                     Subscribe
                 </Button>
                 :
-                <Button className="d-flex justify-content-center align-items-center" as={ButtonGroup} variant="light" size="sm" onClick={Subscribe()}>
+                <Button className="d-flex justify-content-center align-items-center" as={ButtonGroup} variant="light" size="sm" onClick={Subscribe()} >
                     Subscribed 
                     <CheckLg className="text-success"/>
                 </Button>
