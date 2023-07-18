@@ -29,16 +29,27 @@ function PostView({ postId }) {
     }, [])
 
     //Comment submit handler:
-    
+
     function commentSubmit(e) {
         e.preventDefault()
 
         const formData = new FormData()
         formData.append("comment", comment)
 
-        fetch("//localhost:4200/api/auth/post?comment", {
+        fetch("//localhost:4200/api/auth/post/comment", {
             method: 'POST',
             body: formData
+        })
+    }
+
+    //Get comments:
+
+    function getComments(e) {
+        e.preventDefault()
+
+        fetch("//localhost:4200/api/auth/post/comment")
+            .then(data => {
+            return data.json()
         })
     }
 

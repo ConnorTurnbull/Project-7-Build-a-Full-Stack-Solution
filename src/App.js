@@ -89,6 +89,7 @@ function App() {
                     setDefaultState={setDefaultState}
                     setThreadState={setThreadState}
                     setPostState={setPostState}
+                    
 
                   />
 
@@ -189,6 +190,7 @@ function App() {
                 {searchState ? <SearchResultCard
 
                   searchResults={searchResults}
+                  session={session}
 
                 /> : null}
 

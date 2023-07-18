@@ -11,6 +11,12 @@ Page display fixes
 Added all posts to default view
     - could later be changed to popular posts
 
+Comments section started but not working
+ - needs controller
+
+Tried to do subscribe functionality but couldn't get it even close to working at all.
+ - needs controller
+
 
 
 TO DO:
@@ -46,4 +52,3 @@ QUESTIONS:
 
 
 
-How to go about extending course. No way this is going to be ready in time + doing presentations in 4 weeks

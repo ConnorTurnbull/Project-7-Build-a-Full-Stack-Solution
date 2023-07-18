@@ -3,7 +3,7 @@ import { Row, Col, Card, Button } from "react-bootstrap"
 import { Heart, HeartFill } from "react-bootstrap-icons"
 import SubscriptionHandler from "../Subscribe/SubscriptionHandler"
 
-function SearchResultCard({ searchResults }) {
+function SearchResultCard({ searchResults, session }) {
 
     console.log(searchResults)
 
@@ -19,16 +19,16 @@ function SearchResultCard({ searchResults }) {
                             <Card.Body>
                                 <Row>
 
-                                    <Col sm={{ span: 9 }}>
+                                    <Col sm={{ span: 8 }} className="h-100">
                                         <Card.Title>{thread.title}</Card.Title>
                                         <Card.Text>
                                             {thread.description}
                                         </Card.Text>
                                     </Col>
 
-                                    <Col className='d-flex justify-content-center align-items-center' sm={{ span: 3 }}>
+                                    <Col sm={{ span: 4 }} className='d-flex justify-content-center align-items-center' >
 
-                                        <SubscriptionHandler thread={thread} searchResults={searchResults} />
+                                        <SubscriptionHandler thread={thread} searchResults={searchResults} session={session} />
 
                                     </Col>
 

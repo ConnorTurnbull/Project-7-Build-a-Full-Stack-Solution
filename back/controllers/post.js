@@ -1,6 +1,6 @@
 const Post = require('../models/post');
 
-exports.newPost = ( req, res, next ) => {
+exports.newPost = (req, res, next) => {
   const url = req.protocol + '://' + req.get('host');
   const post = new Post({
     selectedThread: req.body.selectedThread,
@@ -26,7 +26,7 @@ exports.newPost = ( req, res, next ) => {
   );
 }
 
-exports.getPosts = ( req, res, next ) => {
+exports.getPosts = (req, res, next) => {
   const options = {}
   if (req.query.selectedThread) {
     options.selectedThread = req.query.selectedThread
@@ -44,7 +44,7 @@ exports.getPosts = ( req, res, next ) => {
   );
 };
 
-exports.getSinglePost = ( req, res, next ) => {
+exports.getSinglePost = (req, res, next) => {
   Post.findOne({
     _id: req.query.id,
   }).then(
@@ -60,7 +60,7 @@ exports.getSinglePost = ( req, res, next ) => {
   );
 };
 
-exports.getAllPosts = ( req, res, next ) => {
+exports.getAllPosts = (req, res, next) => {
   Post.find().then(
     (posts) => {
       return res.status(200).json(posts);
@@ -74,8 +74,18 @@ exports.getAllPosts = ( req, res, next ) => {
   );
 }
 
-exports.newComment = ( req, res, next ) => {
-  Post.fineOne({
+//DOESN'T WORK
+exports.newComment = (req, res, next) => {
+  Post.findOne({
     _id: req.body.id
   })
+    .then(
+      Post.comments.push(req.body.comment)
+    ).catch(
+      (error) => {
+        return res.status(400).json({
+          error: error
+        });
+      }
+    );
 }

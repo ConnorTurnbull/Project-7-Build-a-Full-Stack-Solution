@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema({
     postTitle: { type: String, required: true },
     text: { type: String, required: true },
     imageUrl: { type: Object, required: true },
-    comments: { type: Array }
+    comments: { type: [String]}
 });
 
 
