@@ -63,13 +63,12 @@ exports.getThread = async (req, res, next) => {
   );
 };
 
-// DOESN'T WORK
 exports.subscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
   console.log(threadId, userId)
-  
-  const thread = await Thread.findOne({_id: threadId})
+
+  const thread = await Thread.findOne({ _id: threadId })
     .then(async (thread) => {
       if (thread.usersSubscribed.includes(userId)) {
         return thread
@@ -101,9 +100,44 @@ exports.subscribe = async (req, res) => {
         return null
       }
     );
-    console.log(thread)
-    if (!thread) {
-      return
-    }
+  console.log(thread)
+  if (!thread) {
+    return
+  }
 
+  const user = await User.findOne({ _id: userId })
+    .then(async (user) => {
+      if (user.threads.includes(threadId)) {
+        return user
+      }
+      user.threads.push(threadId)
+      const saved = await user.save().then(
+        () => {
+          return true
+        }
+      ).catch(
+        (error) => {
+          res.status(400).json({
+            error: error
+          });
+          return false
+        }
+      );
+      if (saved) {
+        return user
+      } else {
+        return null
+      }
+    }).catch(
+      (error) => {
+        res.status(404).json({
+          error: error
+        });
+        return null
+      }
+    );
+  console.log(user)
+  if (!user) {
+    return
+  }
 }
