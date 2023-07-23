@@ -24,7 +24,7 @@ function SubscriptionHandler({ searchResults, thread, session }) {
         .then(res => res.json())
 
     }
-
+    
     return (
 
         <Button variant="nooutline-primary" size="sm"  onClick={toggleSub}>
@@ -35,7 +35,7 @@ function SubscriptionHandler({ searchResults, thread, session }) {
                     Subscribe
                 </Button>
                 :
-                <Button className="d-flex justify-content-center align-items-center" as={ButtonGroup} variant="light" size="sm" onClick={Subscribe()} >
+                <Button className="d-flex justify-content-center align-items-center" as={ButtonGroup} variant="light" size="sm" onClick={Subscribe} >
                     Subscribed 
                     <CheckLg className="text-success"/>
                 </Button>

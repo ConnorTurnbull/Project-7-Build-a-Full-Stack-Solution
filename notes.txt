@@ -1,29 +1,18 @@
 DONE:
 
-Account delete finished
+Comments section
+    - started front end
+    - needs controller
+    - created model
+    - created controller - not started
+    - created routes
+    - added to app.js
 
-Started individual post state
-    - need to add comment functionality
-    - backend to do
-
-Page display fixes
-
-Added all posts to default view
-    - could later be changed to popular posts
-
-Comments section started but not working
- - needs controller
-
-Tried to do subscribe functionality but couldn't get it even close to working at all.
- - needs controller
-
+Subscribe controller almost done
+    - currently sending twice so duplicates in both user and thread 
 
 
 TO DO:
-
-subscribe function working
-    don't know how to do backend for subscribe feature
-    promise.all?
 
 crud settings for posts/threads to allow for unread posts
 update threads with last seen datestamp
@@ -32,8 +21,6 @@ object.keys returns array of key value pairs from object
 delete posts?
 
 get auth working
-
-comments section
 
 post sorting in all views
 

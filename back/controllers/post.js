@@ -73,19 +73,3 @@ exports.getAllPosts = (req, res, next) => {
     }
   );
 }
-
-//DOESN'T WORK
-exports.newComment = (req, res, next) => {
-  Post.findOne({
-    _id: req.body.id
-  })
-    .then(
-      Post.comments.push(req.body.comment)
-    ).catch(
-      (error) => {
-        return res.status(400).json({
-          error: error
-        });
-      }
-    );
-}

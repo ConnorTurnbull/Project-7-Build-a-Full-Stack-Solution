@@ -208,6 +208,7 @@ function App() {
                 {postState ? <PostView 
 
                   postId={postId}
+                  session={session}
 
                 /> : null}
 
