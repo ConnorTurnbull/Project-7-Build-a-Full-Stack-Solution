@@ -3,7 +3,7 @@ const Post = require('../models/post')
 
 exports.newComment = async (req, res) => {
     const postId = req.body.postId
-    const commentId = req.body._id
+    
 
     const comment = new Comment({
         text: req.body.text,
@@ -11,11 +11,11 @@ exports.newComment = async (req, res) => {
         postId: req.body.postId
     });
 
-    comment.save().then(
-        () => {
-            res.status(201).json({
-                message: "Comment posted successfully"
-            });
+    const commentId = comment._id
+
+    const savedComment = await comment.save().then(
+        (c) => {
+            return c;
         },
     ).catch(
         (error) => {
@@ -38,7 +38,7 @@ exports.newComment = async (req, res) => {
                 }
             );
             if (saved) {
-                return post
+                return res.status(201).json()
             } else {
                 return null
             }
