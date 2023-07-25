@@ -209,6 +209,7 @@ function App() {
 
                   postId={postId}
                   session={session}
+                  setPostState={setPostState}
 
                 /> : null}
 

@@ -1,16 +1,15 @@
 DONE:
 
 Comments section
-    - started front end
-    - needs controller
-    - created model
-    - created controller - not started
-    - created routes
-    - added to app.js
+    - Functionally complete
+    - Cannot get component to re-render on submit?
+    - delete comments?
+    - usernames required? otherwise just anonymous comments
 
 Subscribe controller almost done
     - currently sending twice so duplicates in both user and thread 
-
+    - unsubscribe to do
+    - subscribe persist
 
 TO DO:
 

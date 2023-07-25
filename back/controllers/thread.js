@@ -66,7 +66,7 @@ exports.getThread = async (req, res, next) => {
 exports.subscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
-  console.log(threadId, userId)
+  // console.log(threadId, userId)
 
   const thread = await Thread.findOne({ _id: threadId })
     .then(async (thread) => {
@@ -111,6 +111,83 @@ exports.subscribe = async (req, res) => {
         return user
       }
       user.threads.push(threadId)
+      const saved = await user.save().then(
+        () => {
+          return true
+        }
+      ).catch(
+        (error) => {
+          res.status(400).json({
+            error: error
+          });
+          return false
+        }
+      );
+      if (saved) {
+        return user
+      } else {
+        return null
+      }
+    }).catch(
+      (error) => {
+        res.status(404).json({
+          error: error
+        });
+        return null
+      }
+    );
+  console.log(user)
+  if (!user) {
+    return
+  }
+}
+
+exports.unsubscribe = async (req, res) => {
+  const threadId = req.body.threadId
+  const userId = req.body.userId
+
+  const thread = await Thread.findOne({ _id: threadId })
+    .then(async (thread) => {
+      if (thread.usersSubscribed.includes(userId)) {
+        return thread
+      }
+      thread.usersSubscribed.pull(userId)
+      const saved = await thread.save()
+        .then(
+          () => {
+            return true
+          }
+        ).catch(
+          (error) => {
+            res.status(400).json({
+              error: error
+            });
+            return false
+          }
+        );
+      if (saved) {
+        return thread
+      } else {
+        return null
+      }
+    }).catch(
+      (error) => {
+        res.status(404).json({
+          error: error
+        });
+        return null
+      }
+    );
+  if (!thread) {
+    return
+  }
+
+  const user = await User.findOne({ _id: userId })
+    .then(async (user) => {
+      if (user.threads.includes(threadId)) {
+        return user
+      }
+      user.threads.pull(threadId)
       const saved = await user.save().then(
         () => {
           return true

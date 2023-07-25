@@ -4,7 +4,7 @@ import { CheckLg } from "react-bootstrap-icons"
 
 function SubscriptionHandler({ searchResults, thread, session }) {
 
-    const [subscribe, setSubscribe] = useState(true)
+    const [subscribe, setSubscribe] = useState(false)
 
     const userId = session.userId
     const threadId = thread._id
@@ -14,36 +14,47 @@ function SubscriptionHandler({ searchResults, thread, session }) {
     }
 
     function Subscribe() {
-        console.log(session.userId, thread._id)
-
+        toggleSub()
+        console.log('Subscribed!')
+        
         fetch("//localhost:4200/api/auth/thread/subscribe", {
-            method: 'PATCH', 
+            method: 'PATCH',
             body: JSON.stringify({ threadId, userId }),
-            headers: {"Content-Type" : "application/json"}
+            headers: { "Content-Type": "application/json" }
         })
-        .then(res => res.json())
+            .then(res => res.json())
 
     }
-    
+
+    function Unsubscribe() {
+        toggleSub()
+        console.log('Unsubscribed!')
+
+        fetch("//localhost:4200/api/auth/thread/unsubscribe", {
+            method: 'PATCH',
+            body: JSON.stringify({ threadId, userId }),
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => res.json())
+    }
+
     return (
-
-        <Button variant="nooutline-primary" size="sm"  onClick={toggleSub}>
-
+        <>
             {subscribe ?
 
-                <Button variant="primary" size="sm">
-                    Subscribe
+                <Button className="d-flex justify-content-center align-items-center" variant="light" size="sm" onClick={Unsubscribe}>
+                    Subscribed
+                    <CheckLg className="text-success" />
                 </Button>
                 :
-                <Button className="d-flex justify-content-center align-items-center" as={ButtonGroup} variant="light" size="sm" onClick={Subscribe} >
-                    Subscribed 
-                    <CheckLg className="text-success"/>
+                <Button variant="primary" size="sm" onClick={Subscribe}>
+                    Subscribe
                 </Button>
-            
+
+
+
             }
-
-        </Button>
-
+        </>
     )
 
 }

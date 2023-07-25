@@ -3,7 +3,7 @@ const Post = require('../models/post')
 
 exports.newComment = async (req, res) => {
     const postId = req.body.postId
-    
+
 
     const comment = new Comment({
         text: req.body.text,
@@ -53,9 +53,13 @@ exports.newComment = async (req, res) => {
 }
 
 exports.getComments = (req, res) => {
-    Comment.find().then(
+    const options = {}
+    if (req.query.postId) {
+        options.postId = req.query.postId
+    }
+    Comment.find(options).then(
         (comments) => {
-            return res.status(200).json(comments)
+            return res.status(200).json(comments);
         }
     ).catch(
         (error) => {

@@ -39,11 +39,12 @@ function PostView({ postId, session }) {
             .then(res => res.json())
     }
 
+    
     //Get comments:
 
     const getComments = async () => {
 
-        fetch("//localhost:4200/api/auth/comment?postId" + postId)
+        fetch("//localhost:4200/api/auth/comments?postId=" + postId)
             .then(data => {
                 return data.json()
             })
@@ -58,8 +59,6 @@ function PostView({ postId, session }) {
         getComments()
 
     }, [])
-
-    console.log(comments)
 
     return (
         <>
@@ -88,7 +87,7 @@ function PostView({ postId, session }) {
                 <Col sm={10} className="d-flex justify-content-center">
                     <InputGroup border='secondary' style={{ width: '30rem' }}>
                         <Form.Control onChange={(e) => { setText(e.target.value); setUserId(session.userId) }} placeholder="Write your comment here..." as="textarea" aria-label="Submit button" />
-                        <Button onClick={submitComment}>Submit</Button>
+                        <Button onClick={ submitComment }>Submit</Button>
                     </InputGroup>
                 </Col>
             </Row>
