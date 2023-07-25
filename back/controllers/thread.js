@@ -105,29 +105,25 @@ exports.subscribe = async (req, res) => {
     return
   }
 
-  const user = await User.findOne({ _id: userId })
+  User.findOne({ _id: userId })
     .then(async (user) => {
       if (user.threads.includes(threadId)) {
-        return user
+        return res.status(401).json({
+          error: "Already Subscribed!"
+      })
       }
       user.threads.push(threadId)
-      const saved = await user.save().then(
+      user.save().then(
         () => {
-          return true
+          return res.status(200).json()
         }
       ).catch(
         (error) => {
           res.status(400).json({
             error: error
           });
-          return false
         }
       );
-      if (saved) {
-        return user
-      } else {
-        return null
-      }
     }).catch(
       (error) => {
         res.status(404).json({
@@ -136,10 +132,6 @@ exports.subscribe = async (req, res) => {
         return null
       }
     );
-  console.log(user)
-  if (!user) {
-    return
-  }
 }
 
 exports.unsubscribe = async (req, res) => {
@@ -148,10 +140,10 @@ exports.unsubscribe = async (req, res) => {
 
   const thread = await Thread.findOne({ _id: threadId })
     .then(async (thread) => {
-      if (thread.usersSubscribed.includes(userId)) {
+      if (!thread.usersSubscribed.includes(userId)) {
         return thread
       }
-      thread.usersSubscribed.pull(userId)
+      thread.usersSubscribed = thread.usersSubscribed.filter((u) => u !== userId)
       const saved = await thread.save()
         .then(
           () => {
@@ -182,15 +174,17 @@ exports.unsubscribe = async (req, res) => {
     return
   }
 
-  const user = await User.findOne({ _id: userId })
+  User.findOne({ _id: userId })
     .then(async (user) => {
-      if (user.threads.includes(threadId)) {
-        return user
+      if (!user.threads.includes(threadId)) {
+        return res.status(401).json({
+          error: "Not Subscribed!"
+        })
       }
-      user.threads.pull(threadId)
-      const saved = await user.save().then(
+      user.threads = user.threads.filter((t) => t !== threadId)
+      user.save().then(
         () => {
-          return true
+          return res.status(200).json()
         }
       ).catch(
         (error) => {
@@ -200,11 +194,6 @@ exports.unsubscribe = async (req, res) => {
           return false
         }
       );
-      if (saved) {
-        return user
-      } else {
-        return null
-      }
     }).catch(
       (error) => {
         res.status(404).json({
@@ -213,8 +202,4 @@ exports.unsubscribe = async (req, res) => {
         return null
       }
     );
-  console.log(user)
-  if (!user) {
-    return
-  }
 }

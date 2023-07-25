@@ -191,6 +191,7 @@ function App() {
 
                   searchResults={searchResults}
                   session={session}
+                  setSession={setSession}
 
                 /> : null}
 
