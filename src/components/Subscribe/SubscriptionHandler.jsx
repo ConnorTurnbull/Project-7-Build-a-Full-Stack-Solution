@@ -7,9 +7,9 @@ function SubscriptionHandler({ searchResults, thread, session, setSession }) {
     const threadId = thread._id
 
 
-    const [subscribe, setSubscribe] = useState(session.user.threads.includes(userId))
+    const [subscribe, setSubscribe] = useState(session.user.threads.includes(threadId))
 
-    
+    console.log(session)
 
     const toggleSub = () => {
         setSubscribe(!subscribe)
@@ -25,12 +25,12 @@ function SubscriptionHandler({ searchResults, thread, session, setSession }) {
             headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
-            .then(() => {setSession({
-                ...session,
-                user: {...session.user,
-                threads: [...session.user.threads, threadId]},
+            .then(() => {
+                setSession({
+                    ...session, user: { ...session.user, threads: [...session.user.threads, threadId] },
 
-            })})
+                })
+            })
 
     }
 
@@ -42,8 +42,7 @@ function SubscriptionHandler({ searchResults, thread, session, setSession }) {
             method: 'PATCH',
             body: JSON.stringify({ threadId, userId }),
             headers: { "Content-Type": "application/json" }
-        })
-            .then(res => res.json())
+        }).then(res => res.json())
     }
 
     return (

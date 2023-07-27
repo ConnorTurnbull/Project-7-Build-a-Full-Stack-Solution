@@ -35,10 +35,11 @@ function PostView({ postId, session }) {
         fetch("//localhost:4200/api/auth/comment", {
             method: 'POST',
             body: formData,
-        })
-            .then(res => res.json())
+        }).then(res => res.json())
+
     }
 
+    console.log(comments)
     
     //Get comments:
 
