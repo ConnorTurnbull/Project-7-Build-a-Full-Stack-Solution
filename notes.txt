@@ -29,6 +29,7 @@ Env variables
 
 Fix user threads
     - Same threads displaying for all users
+    - check logout function in case not clearing session properly
 
 Fix delete account Dropdown
  - staying open
@@ -36,5 +37,5 @@ Fix delete account Dropdown
 
 QUESTIONS:
 
-
+Managing page height between states / pages?
 

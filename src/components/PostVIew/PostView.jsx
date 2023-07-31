@@ -7,7 +7,7 @@ function PostView({ postId, session }) {
     const [singlePost, setSinglePost] = useState({})
     const [text, setText] = useState("")
     const [userId, setUserId] = useState("")
-    const [comments, setComments] = useState([])
+    let [comments, setComments] = useState([])
 
     //Get post:
 
@@ -53,15 +53,14 @@ function PostView({ postId, session }) {
         formData.append("postId", postId)
         formData.append("userId", userId)
 
-        fetch("//localhost:4200/api/auth/comment", {
+        const newComment = fetch("//localhost:4200/api/auth/comment", {
             method: 'POST',
             body: formData,
-        }).then(res => res.json())
+        })
+        .then( res => res.json() )
+        .then( setComments( comments => [...comments, newComment] ))
        
     }
-
-    console.log(comments) 
-
 
     return (
         <>
