@@ -115,7 +115,7 @@ exports.subscribe = async (req, res) => {
       user.threads.push(threadId)
       user.save().then(
         () => {
-          return res.status(200).json()
+          return res.status(200)
         }
       ).catch(
         (error) => {
@@ -184,7 +184,7 @@ exports.unsubscribe = async (req, res) => {
       user.threads = user.threads.filter((t) => t !== threadId)
       user.save().then(
         () => {
-          return res.status(200).json()
+          return res.status(200)
         }
       ).catch(
         (error) => {

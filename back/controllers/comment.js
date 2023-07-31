@@ -27,7 +27,6 @@ exports.newComment = async (req, res) => {
 
     const post = await Post.findOne({ _id: postId })
         .then(async (post) => {
-            console.log(commentId)
             post.comments.push(commentId)
             const saved = await post.save(
             ).catch(
@@ -38,7 +37,7 @@ exports.newComment = async (req, res) => {
                 }
             );
             if (saved) {
-                return res.status(201).json()
+                return res.status(201)
             } else {
                 return null
             }

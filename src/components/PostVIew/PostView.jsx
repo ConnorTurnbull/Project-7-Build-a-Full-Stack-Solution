@@ -9,7 +9,7 @@ function PostView({ postId, session }) {
     const [userId, setUserId] = useState("")
     const [comments, setComments] = useState([])
 
-    //Fetch individual post:
+    //Get post:
 
     function getPost() {
         fetch("//localhost:4200/api/auth/post?id=" + postId)
@@ -22,25 +22,6 @@ function PostView({ postId, session }) {
             })
     }
 
-    //Comment submit handler:
-
-    const submitComment = async (e) => {
-        e.preventDefault()
-
-        const formData = new FormData()
-        formData.append("text", text)
-        formData.append("postId", postId)
-        formData.append("userId", userId)
-
-        fetch("//localhost:4200/api/auth/comment", {
-            method: 'POST',
-            body: formData,
-        }).then(res => res.json())
-
-    }
-
-    console.log(comments)
-    
     //Get comments:
 
     const getComments = async () => {
@@ -60,6 +41,27 @@ function PostView({ postId, session }) {
         getComments()
 
     }, [])
+
+    //Comment submit handler:
+
+    const submitComment = async (e) => {
+        e.preventDefault()
+        
+
+        const formData = new FormData()
+        formData.append("text", text)
+        formData.append("postId", postId)
+        formData.append("userId", userId)
+
+        fetch("//localhost:4200/api/auth/comment", {
+            method: 'POST',
+            body: formData,
+        }).then(res => res.json())
+       
+    }
+
+    console.log(comments) 
+
 
     return (
         <>
@@ -88,7 +90,7 @@ function PostView({ postId, session }) {
                 <Col sm={10} className="d-flex justify-content-center">
                     <InputGroup border='secondary' style={{ width: '30rem' }}>
                         <Form.Control onChange={(e) => { setText(e.target.value); setUserId(session.userId) }} placeholder="Write your comment here..." as="textarea" aria-label="Submit button" />
-                        <Button onClick={ submitComment }>Submit</Button>
+                        <Button onClick={submitComment}>Submit</Button>
                     </InputGroup>
                 </Col>
             </Row>
