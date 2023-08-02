@@ -11,13 +11,6 @@ function Popup() {
     setPopup(!popup)
   }
 
-  // Prevents page scroll while window is open
-  if (Popup) {
-    document.body.classList.add('active-popup')
-  } else {
-    document.body.classList.remove('active-popup')
-  }
-
   return (
     <>
       <Button className='w-100 text-nowrap' size='sm' variant="light" onClick={togglePopup}>

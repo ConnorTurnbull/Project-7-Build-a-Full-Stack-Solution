@@ -22,7 +22,7 @@ function SubscriptionHandler({ searchResults, thread, session, setSession }) {
         toggleSub()
         console.log('Subscribed!')
 
-        const newThread = fetch("//localhost:4200/api/auth/thread/subscribe", {
+        fetch("//localhost:4200/api/auth/thread/subscribe", {
             method: 'PATCH',
             body: JSON.stringify({ threadId, userId }),
             headers: { "Content-Type": "application/json" }

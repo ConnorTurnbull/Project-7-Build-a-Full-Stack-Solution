@@ -7,7 +7,9 @@ exports.newComment = async (req, res) => {
     const comment = new Comment({
         text: req.body.text,
         userId: req.body.userId,
-        postId: req.body.postId
+        postId: req.body.postId,
+        forename: req.body.forename,
+        surname: req.body.surname
     });
 
     const commentId = comment._id

@@ -2,16 +2,17 @@ import React, { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 
 const SignUpHandler = () => {
+    const [forename, setForename] = useState('')
+    const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // console.log(email, password)
 
         fetch("//localhost:4200/api/auth/signup", {
             method: 'POST',
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ forename, surname, email, password }),
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json())
 
@@ -20,6 +21,20 @@ const SignUpHandler = () => {
 
     return (
         <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+
+                <Form.Label>Forename</Form.Label>
+                <Form.Control type="name" placeholder="Enter forename" onChange={(e) => setForename(e.target.value)} />
+
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+
+                <Form.Label>Surname</Form.Label>
+                <Form.Control type="name" placeholder="Enter surname" onChange={(e) => setSurname(e.target.value)} />
+
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
 
                 <Form.Label>Email address</Form.Label>

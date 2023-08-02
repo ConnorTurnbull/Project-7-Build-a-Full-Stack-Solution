@@ -1,13 +1,16 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
 import { Row, Col, Card, InputGroup, Form, Button } from 'react-bootstrap';
-
-
 
 function PostView({ postId, session }) {
     const [singlePost, setSinglePost] = useState({})
     const [text, setText] = useState("")
+    const forename = session.user.forename
+    const surname = session.user.surname
     const [userId, setUserId] = useState("")
     let [comments, setComments] = useState([])
+    const blank = useRef("")
+
+
 
     //Get post:
 
@@ -42,24 +45,32 @@ function PostView({ postId, session }) {
 
     }, [])
 
+
+
     //Comment submit handler:
 
     const submitComment = async (e) => {
         e.preventDefault()
-        
+        blank.current.value = ""
+
+        if (!text) {
+            return
+        }
 
         const formData = new FormData()
         formData.append("text", text)
         formData.append("postId", postId)
         formData.append("userId", userId)
+        formData.append("forename", forename)
+        formData.append("surname", surname)
 
-        const newComment = fetch("//localhost:4200/api/auth/comment", {
+        fetch("//localhost:4200/api/auth/comment", {
             method: 'POST',
             body: formData,
         })
-        .then( res => res.json() )
-        .then( setComments( comments => [...comments, newComment] ))
-       
+            .then(res => res.json())
+            .then(setComments(comments => [...comments, { text, postId, userId, forename, surname }]))
+            .then(setText(""))
     }
 
     return (
@@ -88,8 +99,15 @@ function PostView({ postId, session }) {
             <Row className="mt-3 justify-content-center">
                 <Col sm={10} className="d-flex justify-content-center">
                     <InputGroup border='secondary' style={{ width: '30rem' }}>
-                        <Form.Control onChange={(e) => { setText(e.target.value); setUserId(session.userId) }} placeholder="Write your comment here..." as="textarea" aria-label="Submit button" />
+                        <Form.Control
+                            type="text"
+                            onChange={(e) => { setText(e.target.value); setUserId(session.userId) }}
+                            placeholder="Write your comment here..."
+                            as="textarea"
+                            ref={blank}
+                        />
                         <Button onClick={submitComment}>Submit</Button>
+                       
                     </InputGroup>
                 </Col>
             </Row>
@@ -99,6 +117,7 @@ function PostView({ postId, session }) {
                     <Card className="p-2" border='secondary' style={{ width: '30rem' }}>
                         {Array.isArray(comments) ? comments.map(comment => (
                             <Card className="d-flex m-1 p-2 bg-light">
+                                <p className="fw-light">{comment.forename} {comment.surname} says:</p>
                                 <p className="m-0">{comment.text}</p>
                             </Card>
                         )) :

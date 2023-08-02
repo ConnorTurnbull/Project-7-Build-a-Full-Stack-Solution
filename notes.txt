@@ -1,40 +1,54 @@
 DONE:
 
 Comments section
-    - Functionally complete
-    - Cannot get component to re-render on submit?
-    - delete comments?
-    - usernames required? otherwise just anonymous comments
+    - Complete
+    - names to do - fore and surnames
+        - update sign up SignUpHandler //
+        - update user model //
+        - update user controller //
+        - update comment model //
+        - update comment controller //
+        - implement to comments //
+
+    - text input now clears on submission
+    - will not submit if no text set
 
 Subscribe controller almost done
-    - currently sending twice so duplicates in both user and thread 
-    - unsubscribe to do
-    - subscribe persist
+    - sub and unsub done
+    - subscription now persisting
+    - Need to get subbed threads to update in side nav
 
 TO DO:
 
 crud settings for posts/threads to allow for unread posts
-update threads with last seen datestamp
-object.keys returns array of key value pairs from object
+    - array on user to add post id's to when post opened
+    - styling for read / unread
 
-delete posts?
+potentially refactor db?
+    -sequelize, sqlite3
+
+delete posts/comments?
 
 get auth working
-
-post sorting in all views
 
 Success message on sign up window + auto sign in
 
 Env variables
 
-Fix user threads
-    - Same threads displaying for all users
+Fix user threads in side
+    - Same threads displaying for all users even when not subbed
     - check logout function in case not clearing session properly
 
 Fix delete account Dropdown
  - staying open
 
-
+form validation
+    - log in
+    - sign up
+    - comment submission
+    - new threads
+    - new posts
+    
 QUESTIONS:
 
 Managing page height between states / pages?
