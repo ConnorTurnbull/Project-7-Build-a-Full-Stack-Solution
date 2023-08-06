@@ -117,7 +117,7 @@ function PostView({ postId, session }) {
                     <Card className="p-2" border='secondary' style={{ width: '30rem' }}>
                         {Array.isArray(comments) ? comments.map(comment => (
                             <Card className="d-flex m-1 p-2 bg-light">
-                                <p className="fw-light">{comment.forename} {comment.surname} says:</p>
+                                <p className="fw-light">{comment.forename} {comment.surname} commented:</p>
                                 <p className="m-0">{comment.text}</p>
                             </Card>
                         )) :
