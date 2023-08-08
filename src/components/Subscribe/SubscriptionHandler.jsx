@@ -2,13 +2,11 @@ import { React, useState } from "react";
 import { Button, ButtonGroup } from "react-bootstrap"
 import { CheckLg } from "react-bootstrap-icons"
 
-function SubscriptionHandler({ searchResults, thread, session, setSession }) {
+function SubscriptionHandler({ searchResults, thread, threads, setThreads, session, setSession }) {
     const userId = session.userId
     const threadId = thread._id
 
     const [subscribe, setSubscribe] = useState(session.user.threads.includes(threadId))
-
-    console.log(session)
 
     //Subscription toggle:
 
@@ -28,15 +26,9 @@ function SubscriptionHandler({ searchResults, thread, session, setSession }) {
             headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
+            .then(setThreads(threads => [...threads, threadId]))
 
     }
-
-    // () => {
-    //     setSession({
-    //         ...session, user: { ...session.user, threads: [...session.user.threads, threadId] },
-
-    //     })
-    // }
 
     //Unsubscribe function:
 

@@ -33,8 +33,11 @@ function App() {
 
   const [session, setSession] = useState({})
   const [searchResults, setSearchResults] = useState([])
+  const [threads, setThreads] = useState([])
   const [posts, setPosts] = useState([])
   const [postId, setPostId] = useState('')
+  
+
 
 
 
@@ -163,7 +166,8 @@ function App() {
                 setPostState={setPostState}
                 setSearchResults={setSearchResults}
                 setPosts={setPosts}
-
+                threads={threads}
+                setThreads={setThreads}
 
               />
 
@@ -202,7 +206,9 @@ function App() {
                   setThreadState={setThreadState}
                   setDefaultState={setDefaultState}
                   setSearchState={setSearchState}
+                  postId={postId}
                   setPostId={setPostId}
+                  session={session}
 
                 /> : null}
 

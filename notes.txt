@@ -18,6 +18,11 @@ Subscribe controller almost done
     - subscription now persisting
     - Need to get subbed threads to update in side nav
 
+Read / unread posts
+    - user model updated
+    - user patch route added
+    - function written in content card
+
 TO DO:
 
 crud settings for posts/threads to allow for unread posts

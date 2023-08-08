@@ -107,3 +107,44 @@ exports.delete = (req, res, next) => {
         }
     )
 }
+
+exports.read = async (req, res) => {
+    const userId = req.body.userId
+    const postId = req.body.postId
+
+    const user = await User.fineOne({ _id: userId })
+        .then(async (user) => {
+            if (user.viewedPosts.includes(postId)) {
+                return user
+            }
+            user.viewedPosts.push(postId)
+            const saved = await user.save()
+                .then(
+                    () => {
+                        return true
+                    }
+                ).catch(
+                    (error) => {
+                        res.status(400).json({
+                            error: error
+                        });
+                        return false
+                    }
+                );
+            if (saved) {
+                return user
+            } else {
+                return null
+            }
+        }).catch(
+            (error) => {
+                res.status(404).json({
+                    error: error
+                });
+                return null
+            }
+        );
+    if (!user) {
+        return
+    }
+}

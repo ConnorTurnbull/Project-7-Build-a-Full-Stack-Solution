@@ -6,7 +6,7 @@ function PostView({ postId, session }) {
     const [text, setText] = useState("")
     const forename = session.user.forename
     const surname = session.user.surname
-    const [userId, setUserId] = useState("")
+    const userId = session.userId
     let [comments, setComments] = useState([])
     const blank = useRef("")
 
@@ -38,10 +38,23 @@ function PostView({ postId, session }) {
             })
     }
 
+    //Set post as read:
+    
+    function readPost() {
+
+        fetch("//localhost:4200/api/auth/user/read", {
+            method: "PATCH",
+            body: JSON.stringify({ userId, postId }),
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => res.json())
+    }
+
     useEffect(() => {
 
         getPost()
         getComments()
+        readPost()
 
     }, [])
 
@@ -101,7 +114,7 @@ function PostView({ postId, session }) {
                     <InputGroup border='secondary' style={{ width: '30rem' }}>
                         <Form.Control
                             type="text"
-                            onChange={(e) => { setText(e.target.value); setUserId(session.userId) }}
+                            onChange={(e) => { setText(e.target.value); }}
                             placeholder="Write your comment here..."
                             as="textarea"
                             ref={blank}
