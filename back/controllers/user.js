@@ -112,7 +112,7 @@ exports.read = async (req, res) => {
     const userId = req.body.userId
     const postId = req.body.postId
 
-    const user = await User.fineOne({ _id: userId })
+    const user = await User.findOne({ _id: userId })
         .then(async (user) => {
             if (user.viewedPosts.includes(postId)) {
                 return user

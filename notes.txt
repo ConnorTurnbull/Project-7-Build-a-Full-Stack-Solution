@@ -21,18 +21,15 @@ Subscribe controller almost done
 Read / unread posts
     - user model updated
     - user patch route added
-    - function written in content card
+    - user read controller done
+    - added readPost function to post view
+    - read/unread styling to do
+
 
 TO DO:
 
-crud settings for posts/threads to allow for unread posts
-    - array on user to add post id's to when post opened
-    - styling for read / unread
-
 potentially refactor db?
     -sequelize, sqlite3
-
-delete posts/comments?
 
 get auth working
 
@@ -57,4 +54,7 @@ form validation
 QUESTIONS:
 
 Managing page height between states / pages?
+- min-height
+- overflow y auto?
+- maybe sticky header?
 
