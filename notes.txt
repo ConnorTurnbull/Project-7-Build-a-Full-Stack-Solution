@@ -1,18 +1,5 @@
 DONE:
 
-Comments section
-    - Complete
-    - names to do - fore and surnames
-        - update sign up SignUpHandler //
-        - update user model //
-        - update user controller //
-        - update comment model //
-        - update comment controller //
-        - implement to comments //
-
-    - text input now clears on submission
-    - will not submit if no text set
-
 Subscribe controller almost done
     - sub and unsub done
     - subscription now persisting
@@ -24,6 +11,8 @@ Read / unread posts
     - user read controller done
     - added readPost function to post view
     - read/unread styling to do
+    -refactored post view
+        - moved read/unread posts into separate components
 
 
 TO DO:
@@ -33,9 +22,9 @@ potentially refactor db?
 
 get auth working
 
-Success message on sign up window + auto sign in
-
 Env variables
+
+Success message on sign up window + auto sign in
 
 Fix user threads in side
     - Same threads displaying for all users even when not subbed

@@ -39,7 +39,7 @@ function PostView({ postId, session }) {
     }
 
     //Set post as read:
-    
+
     function readPost() {
 
         fetch("//localhost:4200/api/auth/user/read", {
@@ -120,7 +120,7 @@ function PostView({ postId, session }) {
                             ref={blank}
                         />
                         <Button onClick={submitComment}>Submit</Button>
-                       
+
                     </InputGroup>
                 </Col>
             </Row>
