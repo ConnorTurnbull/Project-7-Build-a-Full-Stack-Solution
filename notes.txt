@@ -10,9 +10,8 @@ Read / unread posts
     - user patch route added
     - user read controller done
     - added readPost function to post view
-    - read/unread styling to do
-    -refactored post view
-        - moved read/unread posts into separate components
+    - read/unread styling done
+    - read/unread posts as separate components
 
 
 TO DO:

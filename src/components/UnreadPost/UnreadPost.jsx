@@ -1,6 +1,5 @@
 import { React } from "react";
 import { Row, Col, Card, Button } from 'react-bootstrap';
-import { ExclamationCircleFill } from 'react-bootstrap-icons'
 
 
 function UnreadPost({ allPosts, setPostId, setPostView }) {
@@ -13,12 +12,14 @@ function UnreadPost({ allPosts, setPostId, setPostView }) {
 
             {Array.isArray(allPosts) ? allPosts.map(post => (
                 <Col sm={6} className=" d-flex justify-content-center g-5">
-                    <Card border='primary' style={{ width: '20rem' }}>
+                    <Card border='secondary' style={{ width: '20rem' }}>
                         
                         <Card.Img className="img-fluid" style={{ height: '75%' }} variant="top" src={post.imageUrl} />
                         
-                        <Card.ImgOverlay> 
-                            <ExclamationCircleFill size="22" fill="blue" /> 
+                        <Card.ImgOverlay>
+                            <Button variant="primary" >
+                                New!
+                            </Button> 
                         </Card.ImgOverlay>
                         
                         <Card.Body>

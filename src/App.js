@@ -183,11 +183,13 @@ function App() {
 
                 {defaultState ? <DefaultView 
                   
+                  postId={postId}
                   setPostId={setPostId}
                   setPostState={setPostState}
                   setThreadState={setThreadState}
                   setDefaultState={setDefaultState}
                   setSearchState={setSearchState}
+                  session={session}
                   
                 /> : null}
 
@@ -270,6 +272,7 @@ function App() {
 
               setAuthenticated={setAuthenticated}
               setSession={setSession}
+              setDefaultState={setDefaultState}
 
             />
 
