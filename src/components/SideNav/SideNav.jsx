@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button } from 'react-bootstrap';
-import { getThreads } from "../../utilities";
-
 
 function SideNav({ 
     session,
@@ -21,6 +19,17 @@ function SideNav({
 
     //Populate subscribed threads list:
 
+    const getThreads = async ({ setThreads, queryString }) => {
+
+        fetch("//localhost:4200/api/auth/thread" + (queryString ||""))
+            .then(data => {
+                return data.json()
+            })
+            .then(threadData => {
+                setThreads(threadData)
+            })
+    }
+    
     useEffect(() => {
         getThreads({ setThreads, queryString: "?userId=" + session.userId })
     }, [])
@@ -48,7 +57,7 @@ function SideNav({
         if (!!selectThread) {
             getPosts()
             setThreadState(true)
-            setDefaultState(false)
+             setDefaultState(false)
             setSearchState(false)
             setPostState(false)
         }

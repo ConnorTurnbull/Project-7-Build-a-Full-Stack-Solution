@@ -13,17 +13,16 @@ Read / unread posts
     - read/unread styling done
     - read/unread posts as separate components
 
+Added success messages to login / sign up windows
 
 TO DO:
 
-potentially refactor db?
+potentially refactor backend?
     -sequelize, sqlite3
 
 get auth working
 
 Env variables
-
-Success message on sign up window + auto sign in
 
 Fix user threads in side
     - Same threads displaying for all users even when not subbed
