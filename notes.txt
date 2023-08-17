@@ -3,7 +3,7 @@ DONE:
 Subscribe controller almost done
     - sub and unsub done
     - subscription now persisting
-    - Need to get subbed threads to update in side nav
+    - Side nav updating but not populating with thread names
 
 Read / unread posts
     - user model updated
@@ -37,11 +37,15 @@ form validation
     - comment submission
     - new threads
     - new posts
-    
-QUESTIONS:
+
+Styling for mobile devices
 
 Managing page height between states / pages?
 - min-height
 - overflow y auto?
 - maybe sticky header?
+
+QUESTIONS:
+
+
 

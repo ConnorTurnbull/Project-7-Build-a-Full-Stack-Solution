@@ -198,6 +198,7 @@ function App() {
                   searchResults={searchResults}
                   session={session}
                   setSession={setSession}
+                  setThreads={setThreads}
 
                 /> : null}
 
