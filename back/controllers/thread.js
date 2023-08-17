@@ -2,9 +2,6 @@ const Thread = require('../models/thread');
 const User = require('../models/user');
 
 exports.newThread = (req, res, next) => {
-  // console.log(req.body);
-  // req.body.thread = JSON.parse(req.body.thread);
-
 
   const thread = new Thread({
     title: req.body.title,

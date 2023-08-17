@@ -26,7 +26,7 @@ function SubscriptionHandler({ searchResults, thread, threads, setThreads, sessi
             headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
-            .then(setThreads(threads => [...threads, threadId]))
+            .then(setThreads(threads => [...threads, thread]))
 
     }
 
@@ -36,11 +36,18 @@ function SubscriptionHandler({ searchResults, thread, threads, setThreads, sessi
         toggleSub()
         console.log('Unsubscribed!')
 
+        const newThreads = threads.filter((threads) => {
+            return threads !== thread
+        })
+
         fetch("//localhost:4200/api/auth/thread/unsubscribe", {
             method: 'PATCH',
             body: JSON.stringify({ threadId, userId }),
             headers: { "Content-Type": "application/json" }
-        }).then(res => res.json())
+        })
+            .then(res => res.json())
+            .then(setThreads(newThreads))
+            console.log(threads)
     }
 
     return (

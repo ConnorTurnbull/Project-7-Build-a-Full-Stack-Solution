@@ -198,6 +198,7 @@ function App() {
                   searchResults={searchResults}
                   session={session}
                   setSession={setSession}
+                  threads={threads}
                   setThreads={setThreads}
 
                 /> : null}
@@ -260,6 +261,7 @@ function App() {
               setDefaultState={setDefaultState}
               setThreadState={setThreadState}
               setSearchResults={setSearchResults}
+              threads={threads}
 
             />
 

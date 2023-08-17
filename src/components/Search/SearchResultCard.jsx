@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap"
 import SubscriptionHandler from "../Subscribe/SubscriptionHandler"
 
-function SearchResultCard({ searchResults, session, setSession, setThreads }) {
+function SearchResultCard({ searchResults, session, setSession, threads, setThreads }) {
 
     console.log(searchResults)
 
@@ -27,7 +27,7 @@ function SearchResultCard({ searchResults, session, setSession, setThreads }) {
 
                                     <Col sm={{ span: 4 }} className='d-flex justify-content-center align-items-center' >
 
-                                        <SubscriptionHandler thread={thread} searchResults={searchResults} session={session} setSession={setSession} setThreads={setThreads}/>
+                                        <SubscriptionHandler thread={thread} searchResults={searchResults} session={session} setSession={setSession} threads={threads} setThreads={setThreads}/>
 
                                     </Col>
 

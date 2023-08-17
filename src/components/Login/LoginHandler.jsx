@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Form, Button, Col, Row } from "react-bootstrap"
 import { CheckCircleFill } from "react-bootstrap-icons"
 
-const LoginHandler = ({ setAuthenticated, setSession, setDefaultState }) => {
+const LoginHandler = ({ setAuthenticated, setSession, setDefaultState, threads }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [success, setSuccess] = useState(false)
@@ -27,6 +27,7 @@ const LoginHandler = ({ setAuthenticated, setSession, setDefaultState }) => {
             })
             .then(setSuccess(true))
             .then(setTimeout(setAuth, 2000))
+            console.log(threads)
 
     }
 
