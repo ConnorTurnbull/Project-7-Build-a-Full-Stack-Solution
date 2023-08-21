@@ -35,8 +35,7 @@ function SideNav({
     }, [])
 
     console.log(threads)
-    console.log(selectThread)
-
+    
     //Fetch posts for individual threads:
 
     function getPosts() {

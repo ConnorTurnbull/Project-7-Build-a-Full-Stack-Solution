@@ -27,8 +27,6 @@ const LoginHandler = ({ setAuthenticated, setSession, setDefaultState, threads }
             })
             .then(setSuccess(true))
             .then(setTimeout(setAuth, 2000))
-            console.log(threads)
-
     }
 
 
