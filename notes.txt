@@ -15,6 +15,7 @@ Read / unread posts
 
 Added success messages to login / sign up windows
 
+
 TO DO:
 
 potentially refactor backend?
@@ -23,13 +24,14 @@ potentially refactor backend?
 get auth working
 
 Env variables
+    -wont work
 
-Fix user threads in side
+Fix user threads in side nav
     - Same threads displaying for all users even when not subbed
     - check logout function in case not clearing session properly
 
 Fix delete account Dropdown
- - staying open
+ - staying open when used
 
 form validation
     - log in
