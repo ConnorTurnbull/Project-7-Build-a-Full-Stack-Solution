@@ -20,16 +20,6 @@ sequelize.authenticate().then( () => {
     console.error('Unable to connect to the database:', error);
 })
 
-//MongoDB connection:
-// mongoose.connect('mongodb+srv://connorturnbull93:bLwcWErYEB8IjMYL@ct-project-6.xxrwq6d.mongodb.net/Project7?retryWrites=true&w=majority')
-//     .then(() => {
-//         console.log('Successfully connected to MongoDB Atlas!');
-//     })
-//     .catch((error) => {
-//         console.log('Unable to connect to MongoDB Atlas!');
-//         console.error(error);
-//     });
-
 //Headers:
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

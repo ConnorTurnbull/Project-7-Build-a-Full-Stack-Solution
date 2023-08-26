@@ -1,11 +1,31 @@
-const mongoose = require('mongoose');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
 
-const commentSchema = mongoose.Schema({
-    text: { type: String, required: true },
-    userId: { type: String, required: true },
-    postId: { type: String, required: true},
-    forename: { type: String, required: true},
-    surname: { type: String, required: true}
-});
+const Comment = sequelize.define('Comment', {
+    text: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    userId: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    postId: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    forename: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    surname: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+})
 
-module.exports = mongoose.model('Comment', commentSchema);
+Comment.sync().then((data) => {
+    console.log("Table synced successfully")
+}).catch((error) => {
+    console.log("Error syncing table!")
+})

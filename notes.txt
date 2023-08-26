@@ -1,9 +1,8 @@
 DONE:
 
 Subscribe controller almost done
-    - sub and unsub done
-    - subscription now persisting
-    - Side nav updating but not populating with thread names
+    - sidenav now updating on sub/unsub
+    - previously held subs not behaving properly
 
 Read / unread posts
     - user model updated
@@ -14,6 +13,11 @@ Read / unread posts
     - read/unread posts as separate components
 
 Added success messages to login / sign up windows
+
+Backend redux
+    - app.js updated with db connection
+    - models re-done
+    - tables not being created in db currently
 
 
 TO DO:

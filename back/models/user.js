@@ -1,15 +1,38 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
 
-const userSchema = mongoose.Schema({
-    forename: { type: String, required: true },
-    surname: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    threads: { type: [String], required: true },
-    viewedPosts: { type: [String], required: true }
+const User = sequelize.define('User', {
+    forename: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    surname: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type:DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    password: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    threads: {
+        type:DataTypes.STRING,
+        allowNull: false,
+    },
+    viewedPosts: {
+        type:DataTypes.STRING,
+        allowNull: false,
+    }
+
 });
 
-userSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model('User', userSchema);
+User.sync().then((data) => {
+    console.log("Table synced successfully")
+}).catch((error) => {
+    console.log("Error syncing table!")
+    console.log(error)
+})
