@@ -12,7 +12,7 @@ exports.newComment = async (req, res) => {
         surname: req.body.surname
     });
 
-    const commentId = comment._id
+    const commentId = comment.id
 
     const savedComment = await comment.save().then(
         (c) => {
@@ -26,7 +26,7 @@ exports.newComment = async (req, res) => {
         }
     );
 
-    const post = await Post.findOne({where:{ _id: postId }})
+    const post = await Post.findOne({where:{ id: postId }})
         .then(async (post) => {
             post.comments.push(commentId)
             const saved = await post.save(

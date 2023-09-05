@@ -37,7 +37,7 @@ function ContentCard({
                             <Card.Text>
                                 {posts.text}
                             </Card.Text>
-                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(posts._id); setPostView(); }}>
+                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(posts.id); setPostView(); }}>
                                 View Post
                             </Button>
                         </Card.Body>

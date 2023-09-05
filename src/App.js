@@ -37,16 +37,10 @@ function App() {
   const [posts, setPosts] = useState([])
   const [postId, setPostId] = useState('')
   
-
-
-
-
   console.log("Default State" + defaultState)
   console.log("Search State" + searchState)
   console.log("Thread State" + threadState)
   console.log("Post State" + postState)
-
-  
 
   //User logged in
 

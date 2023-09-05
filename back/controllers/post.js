@@ -46,7 +46,7 @@ exports.getPosts = (req, res, next) => {
 
 exports.getSinglePost = (req, res, next) => {
   Post.findOne({
-    where:{_id: req.query.id},
+    where:{id: req.query.id},
   }).then(
     (post) => {
       res.status(200).json(post);

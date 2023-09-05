@@ -4,7 +4,7 @@ import { CheckLg } from "react-bootstrap-icons"
 
 function SubscriptionHandler({ searchResults, thread, threads, setThreads, session, setSession }) {
     const userId = session.userId
-    const threadId = thread._id
+    const threadId = thread.id
 
     const [subscribe, setSubscribe] = useState(session.user.threads.includes(threadId))
 
@@ -26,7 +26,7 @@ function SubscriptionHandler({ searchResults, thread, threads, setThreads, sessi
             headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
-            .then(setThreads(threads => [...threads, thread]))
+            .then(() => setThreads([...threads, thread]))
 
     }
 
@@ -37,7 +37,7 @@ function SubscriptionHandler({ searchResults, thread, threads, setThreads, sessi
         console.log('Unsubscribed!')
 
         const newThreads = threads.filter((threads) => {
-            return threads !== thread
+            return threads.id !== thread.id
         })
 
         fetch("//localhost:4200/api/auth/thread/unsubscribe", {

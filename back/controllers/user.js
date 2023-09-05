@@ -51,13 +51,13 @@ exports.login = (req, res, next) => {
                         });
                     }
                     const token = jwt.sign(
-                        { userId: user._id },
+                        { userId: user.id },
                         'RANDOM_TOKEN_SECRET',
                         { expiresIn: '24h' });
                     res.status(200).json({
-                        userId: user._id,
+                        userId: user.id,
                         token: token,
-                        user: user._doc
+                        user: user
                     });
                 }
             ).catch(
@@ -78,14 +78,14 @@ exports.login = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    User.findOne({where:{ _id: req.body.userId }}).then(
+    User.findOne({where:{ id: req.body.userId }}).then(
         (user) => {
             if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
                 });
             }
-            User.deleteOne({where:{ _id: req.body.userId }}).then(
+            User.deleteOne({where:{ id: req.body.userId }}).then(
                 () => {
                     res.status(200).json({
                         message: "User Deleted!"
@@ -112,7 +112,7 @@ exports.read = async (req, res) => {
     const userId = req.body.userId
     const postId = req.body.postId
 
-    const user = await User.findOne({where:{ _id: userId }})
+    const user = await User.findOne({where:{ id: userId }})
         .then(async (user) => {
             if (user.viewedPosts.includes(postId)) {
                 return user

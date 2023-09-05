@@ -2,6 +2,10 @@ const { DataTypes } = require('sequelize');
 const sequelize = require("../connect");
 
 const Thread = sequelize.define('Thread', {
+    id: {
+        type:DataTypes.INTEGER,
+        primaryKey: true
+    },
     title: {
         type:DataTypes.STRING,
         allowNull: false

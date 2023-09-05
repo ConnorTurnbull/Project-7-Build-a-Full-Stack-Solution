@@ -82,10 +82,10 @@ function SideNav({
 
                     <Button
                         variant="light"
-                        onClick={() => setSelectThread(thread._id)}
+                        onClick={() => setSelectThread(thread.id)}
                         title={thread.title}
-                        value={thread._id}
-                        key={thread._id}
+                        value={thread.id}
+                        key={thread.id}
                     >
 
                         {thread.title}
