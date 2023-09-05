@@ -26,7 +26,7 @@ exports.newComment = async (req, res) => {
         }
     );
 
-    const post = await Post.findOne({ _id: postId })
+    const post = await Post.findOne({where:{ _id: postId }})
         .then(async (post) => {
             post.comments.push(commentId)
             const saved = await post.save(
@@ -59,7 +59,7 @@ exports.getComments = (req, res) => {
     if (req.query.postId) {
         options.postId = req.query.postId
     }
-    Comment.find(options).then(
+    Comment.findAll({where:options}).then(
         (comments) => {
             return res.status(200).json(comments);
         }

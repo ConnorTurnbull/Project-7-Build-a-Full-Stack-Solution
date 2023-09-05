@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes } = require('sequelize');
+const sequelize = require("../connect");
 
 const Post = sequelize.define('Post', {
     selectedThread: {
@@ -20,9 +20,11 @@ const Post = sequelize.define('Post', {
     },
     comments: {
         type:DataTypes.STRING,
-        allowNull: false
+        defaultValue: ""
     },
 })
+
+module.exports = Post;
 
 Post.sync().then((data) => {
     console.log("Table synced successfully")

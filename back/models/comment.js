@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes } = require('sequelize');
+const sequelize = require("../connect");
 
 const Comment = sequelize.define('Comment', {
     text: {
@@ -23,6 +23,8 @@ const Comment = sequelize.define('Comment', {
         allowNull: false
     },
 })
+
+module.exports = Comment;
 
 Comment.sync().then((data) => {
     console.log("Table synced successfully")

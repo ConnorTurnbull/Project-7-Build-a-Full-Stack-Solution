@@ -46,7 +46,7 @@ exports.getThread = async (req, res, next) => {
   }
   // console.log(options)
 
-  Thread.find(options).then(
+  Thread.findAll({where:options}).then(
     (threads) => {
       // console.log(threads)
       return res.status(200).json(threads);
@@ -65,7 +65,7 @@ exports.subscribe = async (req, res) => {
   const userId = req.body.userId
   // console.log(threadId, userId)
 
-  const thread = await Thread.findOne({ _id: threadId })
+  const thread = await Thread.findOne({where:{ _id: threadId }})
     .then(async (thread) => {
       if (thread.usersSubscribed.includes(userId)) {
         return thread
@@ -102,7 +102,7 @@ exports.subscribe = async (req, res) => {
     return
   }
 
-  User.findOne({ _id: userId })
+  User.findOne({where:{ _id: userId }})
     .then(async (user) => {
       if (user.threads.includes(threadId)) {
         return res.status(401).json({
@@ -137,7 +137,7 @@ exports.unsubscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
 
-  const thread = await Thread.findOne({ _id: threadId })
+  const thread = await Thread.findOne({where:{ _id: threadId }})
     .then(async (thread) => {
       if (!thread.usersSubscribed.includes(userId)) {
         return thread
@@ -173,7 +173,7 @@ exports.unsubscribe = async (req, res) => {
     return
   }
 
-  User.findOne({ _id: userId })
+  User.findOne({where:{ _id: userId }})
     .then(async (user) => {
       if (!user.threads.includes(threadId)) {
         return res.status(401).json({

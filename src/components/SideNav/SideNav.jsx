@@ -33,8 +33,8 @@ function SideNav({
     useEffect(() => {
         getThreads({ setThreads, queryString: "?userId=" + session.userId })
     }, [])
-
-    console.log(threads)
+    
+    console.log()
     
     //Fetch posts for individual threads:
 

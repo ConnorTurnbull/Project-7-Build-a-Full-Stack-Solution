@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes } = require('sequelize');
+const sequelize = require("../connect");
 
 const User = sequelize.define('User', {
     forename: {
@@ -21,14 +21,16 @@ const User = sequelize.define('User', {
     },
     threads: {
         type:DataTypes.STRING,
-        allowNull: false,
+        defaultValue: ""
     },
     viewedPosts: {
         type:DataTypes.STRING,
-        allowNull: false,
+        defaultValue: ""
     }
 
 });
+
+module.exports = User;
 
 User.sync().then((data) => {
     console.log("Table synced successfully")

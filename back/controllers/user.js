@@ -35,9 +35,9 @@ exports.signup = (req, res, next) => {
 
 exports.login = (req, res, next) => {
     console.log(req.body)
-
-    User.findOne({ email: req.body.email }).then(
+    User.findOne({where:{ email: req.body.email }}).then(
         (user) => {
+            console.log(user)
             if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
@@ -78,14 +78,14 @@ exports.login = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    User.findOne({ _id: req.body.userId }).then(
+    User.findOne({where:{ _id: req.body.userId }}).then(
         (user) => {
             if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
                 });
             }
-            User.deleteOne({ _id: req.body.userId }).then(
+            User.deleteOne({where:{ _id: req.body.userId }}).then(
                 () => {
                     res.status(200).json({
                         message: "User Deleted!"
@@ -112,7 +112,7 @@ exports.read = async (req, res) => {
     const userId = req.body.userId
     const postId = req.body.postId
 
-    const user = await User.findOne({ _id: userId })
+    const user = await User.findOne({where:{ _id: userId }})
         .then(async (user) => {
             if (user.viewedPosts.includes(postId)) {
                 return user

@@ -1,29 +1,22 @@
 DONE:
 
-Subscribe controller almost done
-    - sidenav now updating on sub/unsub
-    - previously held subs not behaving properly
-
-Read / unread posts
-    - user model updated
-    - user patch route added
-    - user read controller done
-    - added readPost function to post view
-    - read/unread styling done
-    - read/unread posts as separate components
-
-Added success messages to login / sign up windows
-
 Backend redux
     - app.js updated with db connection
     - models re-done
-    - tables not being created in db currently
+    - tables now showing in db
+    - controllers updated as far as can see
+    - new users posting to db
+    - threads posting to db
+    - posts posting to db
+
+    to fix:
+    - don't know how to get stuff from the DB.
+    - fetching threads - side nav and search search results
+    - no user id being defined
+    - anything session related just doesn't seem to work
 
 
 TO DO:
-
-potentially refactor backend?
-    -sequelize, sqlite3
 
 get auth working
 
@@ -37,19 +30,11 @@ Fix user threads in side nav
 Fix delete account Dropdown
  - staying open when used
 
-form validation
-    - log in
-    - sign up
-    - comment submission
-    - new threads
-    - new posts
-
 Styling for mobile devices
-
-Managing page height between states / pages?
-- min-height
-- overflow y auto?
-- maybe sticky header?
+    Managing page height between states / pages?
+    - min-height
+    - overflow y auto?
+    - maybe sticky header?
 
 QUESTIONS:
 

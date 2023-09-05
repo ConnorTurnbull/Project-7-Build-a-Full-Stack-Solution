@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes } = require('sequelize');
+const sequelize = require("../connect");
 
 const Thread = sequelize.define('Thread', {
     title: {
@@ -12,10 +12,12 @@ const Thread = sequelize.define('Thread', {
     },
     usersSubscribed: {
         type:DataTypes.STRING,
-        allowNull: false
+        defaultValue: ""
     },
     
 })
+
+module.exports = Thread;
 
 Thread.sync().then((data) => {
     console.log("Table synced successfully")
