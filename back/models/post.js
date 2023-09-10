@@ -22,11 +22,15 @@ const Post = sequelize.define('Post', {
         type:DataTypes.STRING,
         defaultValue: ""
     },
+    viewedBy: {
+        type:DataTypes.STRING,
+        defaultValue: ""
+    }
 })
 
 module.exports = Post;
 
-Post.sync().then((data) => {
+Post.sync({ alter: true }).then((data) => {
     console.log("Table synced successfully")
 }).catch((error) => {
     console.log("Error syncing table!")

@@ -38,23 +38,12 @@ function PostView({ postId, session }) {
             })
     }
 
-    //Set post as read:
 
-    function readPost() {
-
-        fetch("//localhost:4200/api/auth/user/read", {
-            method: "PATCH",
-            body: JSON.stringify({ userId, postId }),
-            headers: { "Content-Type": "application/json" }
-        })
-            .then(res => res.json())
-    }
 
     useEffect(() => {
 
         getPost()
         getComments()
-        readPost()
 
     }, [])
 
