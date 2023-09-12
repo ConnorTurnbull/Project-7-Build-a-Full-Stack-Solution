@@ -1,24 +1,11 @@
 DONE:
 
 Backend redux
-    - app.js updated with db connection
-    - models re-done
-    - tables now showing in db
-    - controllers updated as far as can see
-    - new users posting to db
-    - threads posting to db
-    - posts posting to db
-
-    to fix:
-    - don't know how to get stuff from the DB.
-    - fetching threads - side nav and search search results
-    - no user id being defined
-    - anything session related just doesn't seem to work
-
+    - Unread/read posts currently erroring out
+    - Sidenav not populating on initial page load
+    - Comments not working
 
 TO DO:
-
-get auth working
 
 Env variables
     -wont work

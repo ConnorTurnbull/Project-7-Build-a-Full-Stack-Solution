@@ -1,16 +1,16 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Row, Col, Card, Button } from 'react-bootstrap';
 
 
 function Post({ allPosts, setPostId, setPostView, userId, postId }) {
-    const read = ""
+    const [read, setRead] = useState([])
 
     //Set post as read:
 
     function readPost() {
 
-        fetch("//localhost:4200/api/auth/user/read", {
-            method: "PATCH",
+        fetch("//localhost:4200/api/auth/post/read", {
+            method: "POST",
             body: JSON.stringify({ userId, postId }),
             headers: { "Content-Type": "application/json" }
         })
@@ -32,7 +32,7 @@ function Post({ allPosts, setPostId, setPostView, userId, postId }) {
                             <Card.Text>
                                 {post.text}
                             </Card.Text>
-                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView() }}>
+                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView(); readPost() }}>
                                 View Post
                             </Button>
                         </Card.Body>
@@ -68,7 +68,7 @@ function Post({ allPosts, setPostId, setPostView, userId, postId }) {
                                 {post.text}
                             </Card.Text>
                             
-                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView() }}>
+                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView(); readPost() }}>
                                 View Post
                             </Button>
 
