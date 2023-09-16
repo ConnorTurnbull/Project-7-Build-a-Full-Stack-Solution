@@ -17,14 +17,6 @@ const Post = sequelize.define('Post', {
     imageUrl: {
         type:DataTypes.STRING,
         allowNull: false
-    },
-    comments: {
-        type:DataTypes.STRING,
-        defaultValue: ""
-    },
-    viewedBy: {
-        type:DataTypes.STRING,
-        defaultValue: ""
     }
 })
 

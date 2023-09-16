@@ -8,6 +8,5 @@ router.post('/post', multer, postCtrl.newPost);
 router.get('/posts/all', postCtrl.getAllPosts);
 router.get('/posts', postCtrl.getPosts);
 router.get('/post', postCtrl.getSinglePost);
-router.post('/post/read', postCtrl.read);
 
 module.exports = router;

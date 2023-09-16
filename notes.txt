@@ -4,6 +4,7 @@ Backend redux
     - Unread/read posts currently erroring out
     - Sidenav not populating on initial page load
     - Comments not working
+    - check for array stuff and make it string stuff
 
 TO DO:
 

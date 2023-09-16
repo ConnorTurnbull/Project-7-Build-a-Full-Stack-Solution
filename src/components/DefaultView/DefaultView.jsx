@@ -12,6 +12,8 @@ function DefaultView({
     session }) {
     const [allPosts, setAllPosts] = useState([])
 
+    console.log("DefaultView")
+
     const getAllPosts = async => {
         fetch("//localhost:4200/api/auth/posts/all")
             .then(data => {

@@ -35,7 +35,7 @@ exports.signup = (req, res, next) => {
 
 exports.login = (req, res, next) => {
     console.log(req.body)
-    User.findOne({where:{ email: req.body.email }}).then(
+    User.findOne({ where: { email: req.body.email } }).then(
         (user) => {
             console.log(user)
             if (!user) {
@@ -78,14 +78,14 @@ exports.login = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    User.findOne({where:{ id: req.body.userId }}).then(
+    User.findOne({ where: { id: req.body.userId } }).then(
         (user) => {
             if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
                 });
             }
-            User.deleteOne({where:{ id: req.body.userId }}).then(
+            User.deleteOne({ where: { id: req.body.userId } }).then(
                 () => {
                     res.status(200).json({
                         message: "User Deleted!"
@@ -106,4 +106,62 @@ exports.delete = (req, res, next) => {
             });
         }
     )
+}
+
+exports.read = async (req, res, next) => {
+    const userId = req.body.userId
+    const postId = req.body.singlePostId
+
+    User.findOne({ where: { id: userId } })
+        .then(async (user) => {
+            if (user.viewedPosts.indexOf(postId) !== -1) {
+                return res.status(401).json({
+                    error: "Already viewed!"
+                })
+            }
+            if (user.viewedPosts.length) {
+                user.viewedPosts += `,${postId}`
+            } else {
+                user.viewedPosts = postId
+            }
+            user.save().then(
+                () => {
+                    return res.status(200).json({
+                        message: "Post marked as read"
+                    })
+                }
+            ).catch(
+                (error) => {
+                    res.status(400).json({
+                        error: error
+                    });
+                }
+            );
+        }).catch(
+            (error) => {
+                res.status(404).json({
+                    error: error,
+                    message: "User not found"
+                });
+                return null
+            }
+        );
+}
+
+exports.readStatus = async (req, res, next) => {
+    const userId = req.body.userId
+    const postId = req.body.singlePostId
+
+    User.findOne({ where: { id: userId } })
+        .then(async (user) => {
+            if (user.viewedPosts.indexOf(postId)) {
+                return res.status(200).json(user)
+            }
+        }).catch(
+            (error) => {
+                return res.status(400).json({
+                    error: error
+                });
+            }
+        );
 }

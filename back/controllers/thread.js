@@ -29,26 +29,23 @@ exports.getThread = async (req, res, next) => {
   if (req.query.userId) {
     const userThreads = await User.findOne().then(
       (user) => {
-        // console.log(user)
         return user.threads
       }
     )
     if (!userThreads || !userThreads.length) {
-      // console.log(userThreads)
       return res.status(404).json({
         message: 'No threads found'
       })
     }
-    options.id = userThreads
+    options.id = userThreads.split(",")
   }
   else if (req.query.title) {
     options.title = { $regex: new RegExp(req.query.title, "i") }
   }
-  // console.log(options)
 
   Thread.findAll({where:options}).then(
     (threads) => {
-      // console.log(threads)
+      console.log(threads)
       return res.status(200).json(threads);
     }
   ).catch(
@@ -63,7 +60,6 @@ exports.getThread = async (req, res, next) => {
 exports.subscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
-  // console.log(threadId, userId)
 
   const thread = await Thread.findAll({where:{ id: threadId }})
     .then(async (threads) => {

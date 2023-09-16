@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Row, Col, Card, Button } from 'react-bootstrap';
 
 
@@ -7,16 +7,28 @@ function Post({ allPosts, setPostId, setPostView, userId, postId }) {
 
     //Set post as read:
 
-    function readPost() {
+    function readPost( singlePostId ) {
 
-        fetch("//localhost:4200/api/auth/post/read", {
+        fetch("//localhost:4200/api/auth/read", {
             method: "POST",
-            body: JSON.stringify({ userId, postId }),
+            body: JSON.stringify({ userId, singlePostId }),
             headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
+            
+    }
+
+    function readStatus() {
+
+        fetch("//localhost:4200/api/auth/readStatus")
+            .then(data => {
+                console.log(data) 
+                return data.json()
+            })
     }
     
+    readStatus()
+
     if (read) return (
         <Row className="gy-3 active-popup w-100">
 
@@ -32,7 +44,7 @@ function Post({ allPosts, setPostId, setPostView, userId, postId }) {
                             <Card.Text>
                                 {post.text}
                             </Card.Text>
-                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView(); readPost() }}>
+                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView(); readPost(post.id) }}>
                                 View Post
                             </Button>
                         </Card.Body>
@@ -68,7 +80,7 @@ function Post({ allPosts, setPostId, setPostView, userId, postId }) {
                                 {post.text}
                             </Card.Text>
                             
-                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView(); readPost() }}>
+                            <Button variant="link" className="p-0" size="sm" onClick={() => { setPostId(post.id); setPostView(); readPost(post.id) }}>
                                 View Post
                             </Button>
 
