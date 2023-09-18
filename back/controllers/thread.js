@@ -29,26 +29,23 @@ exports.getThread = async (req, res, next) => {
   if (req.query.userId) {
     const userThreads = await User.findOne().then(
       (user) => {
-        // console.log(user)
         return user.threads
       }
     )
     if (!userThreads || !userThreads.length) {
-      // console.log(userThreads)
       return res.status(404).json({
         message: 'No threads found'
       })
     }
-    options._id = userThreads
+    options.id = userThreads.split(",")
   }
   else if (req.query.title) {
     options.title = { $regex: new RegExp(req.query.title, "i") }
   }
-  // console.log(options)
 
-  Thread.find(options).then(
+  Thread.findAll({where:options}).then(
     (threads) => {
-      // console.log(threads)
+      console.log(threads)
       return res.status(200).json(threads);
     }
   ).catch(
@@ -63,14 +60,19 @@ exports.getThread = async (req, res, next) => {
 exports.subscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
-  // console.log(threadId, userId)
 
-  const thread = await Thread.findOne({ _id: threadId })
-    .then(async (thread) => {
-      if (thread.usersSubscribed.includes(userId)) {
+  const thread = await Thread.findAll({where:{ id: threadId }})
+    .then(async (threads) => {
+      console.log(threads)
+      const thread = threads[0]
+      if (thread.usersSubscribed.indexOf(userId)!== -1) {
         return thread
       }
-      thread.usersSubscribed.push(userId)
+      if (thread.usersSubscribed.length) {
+        thread.usersSubscribed+=`,${userId}`
+      } else {
+        thread.usersSubscribed = userId
+      }
       const saved = await thread.save()
         .then(
           () => {
@@ -92,7 +94,8 @@ exports.subscribe = async (req, res) => {
     }).catch(
       (error) => {
         res.status(404).json({
-          error: error
+          error: error,
+          message: "thread not found"
         });
         return null
       }
@@ -102,14 +105,20 @@ exports.subscribe = async (req, res) => {
     return
   }
 
-  User.findOne({ _id: userId })
+  User.findOne({where:{ id: userId }})
+
     .then(async (user) => {
-      if (user.threads.includes(threadId)) {
+      console.log(user)
+      if (user.threads.indexOf(threadId)!== -1) {
         return res.status(401).json({
           error: "Already Subscribed!"
       })
       }
-      user.threads.push(threadId)
+      if (user.threads.length) {
+        user.threads+=`,${threadId}`
+      } else {
+        user.threads = threadId
+      }
       user.save().then(
         () => {
           return res.status(200).json({
@@ -126,7 +135,8 @@ exports.subscribe = async (req, res) => {
     }).catch(
       (error) => {
         res.status(404).json({
-          error: error
+          error: error,
+          message: "user not found"
         });
         return null
       }
@@ -137,12 +147,20 @@ exports.unsubscribe = async (req, res) => {
   const threadId = req.body.threadId
   const userId = req.body.userId
 
-  const thread = await Thread.findOne({ _id: threadId })
+  const thread = await Thread.findOne({where:{ id: threadId }})
     .then(async (thread) => {
-      if (!thread.usersSubscribed.includes(userId)) {
-        return thread
+      switch (thread.usersSubscribed.indexOf(userId)) {
+        case -1:
+          return thread
+      
+        case 0:
+          thread.usersSubscribed = thread.usersSubscribed.replace(userId, "")
+          break
+      
+        default:
+          thread.usersSubscribed = thread.usersSubscribed.replace(`,${userId}`, "")
+          break;
       }
-      thread.usersSubscribed = thread.usersSubscribed.filter((u) => u !== userId)
       const saved = await thread.save()
         .then(
           () => {
@@ -173,14 +191,22 @@ exports.unsubscribe = async (req, res) => {
     return
   }
 
-  User.findOne({ _id: userId })
+  User.findOne({where:{ id: userId }})
     .then(async (user) => {
-      if (!user.threads.includes(threadId)) {
-        return res.status(401).json({
-          error: "Not Subscribed!"
-        })
+      switch (user.threads.indexOf(threadId)) {
+        case -1:
+          return res.status(401).json({
+            error: "Not Subscribed!"
+          })
+        
+        case 0:
+          user.threads = user.threads.replace(threadId, "")
+          break
+
+        default:
+          user.threads = user.threads.replace(`,${threadId}`, "")
+          break;
       }
-      user.threads = user.threads.filter((t) => t !== threadId)
       user.save().then(
         () => {
           return res.status(200).json({

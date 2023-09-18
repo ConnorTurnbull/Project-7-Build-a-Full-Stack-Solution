@@ -31,7 +31,7 @@ exports.getPosts = (req, res, next) => {
   if (req.query.selectedThread) {
     options.selectedThread = req.query.selectedThread
   }
-  Post.find(options).then(
+  Post.findAll({where:options}).then(
     (posts) => {
       return res.status(200).json(posts);
     }
@@ -46,7 +46,7 @@ exports.getPosts = (req, res, next) => {
 
 exports.getSinglePost = (req, res, next) => {
   Post.findOne({
-    _id: req.query.id,
+    where:{id: req.query.id},
   }).then(
     (post) => {
       res.status(200).json(post);
@@ -61,7 +61,7 @@ exports.getSinglePost = (req, res, next) => {
 };
 
 exports.getAllPosts = (req, res, next) => {
-  Post.find().then(
+  Post.findAll().then(
     (posts) => {
       return res.status(200).json(posts);
     }

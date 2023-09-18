@@ -1,12 +1,30 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+const { DataTypes } = require('sequelize');
+const sequelize = require("../connect");
 
-const threadSchema = mongoose.Schema({
-    title: { type: String, required: true, unique: true },
-    description: { type:String, required: true },
-    usersSubscribed: { type: [String], required: true }
-});
+const Thread = sequelize.define('Thread', {
+    id: {
+        type:DataTypes.INTEGER,
+        primaryKey: true
+    },
+    title: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    usersSubscribed: {
+        type:DataTypes.STRING,
+        defaultValue: ""
+    },
+    
+})
 
-threadSchema.plugin(uniqueValidator);
+module.exports = Thread;
 
-module.exports = mongoose.model('Thread', threadSchema);
+Thread.sync().then((data) => {
+    console.log("Table synced successfully")
+}).catch((error) => {
+    console.log("Error syncing table!")
+})

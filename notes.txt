@@ -1,27 +1,12 @@
 DONE:
 
-Subscribe controller almost done
-    - sub and unsub done
-    - subscription now persisting
-    - Side nav updating but not populating with thread names
-
-Read / unread posts
-    - user model updated
-    - user patch route added
-    - user read controller done
-    - added readPost function to post view
-    - read/unread styling done
-    - read/unread posts as separate components
-
-Added success messages to login / sign up windows
-
+Backend redux
+    - Unread/read posts currently erroring out
+    - Sidenav not populating on initial page load
+    - Comments not working
+    - check for array stuff and make it string stuff
 
 TO DO:
-
-potentially refactor backend?
-    -sequelize, sqlite3
-
-get auth working
 
 Env variables
     -wont work
@@ -33,19 +18,11 @@ Fix user threads in side nav
 Fix delete account Dropdown
  - staying open when used
 
-form validation
-    - log in
-    - sign up
-    - comment submission
-    - new threads
-    - new posts
-
 Styling for mobile devices
-
-Managing page height between states / pages?
-- min-height
-- overflow y auto?
-- maybe sticky header?
+    Managing page height between states / pages?
+    - min-height
+    - overflow y auto?
+    - maybe sticky header?
 
 QUESTIONS:
 

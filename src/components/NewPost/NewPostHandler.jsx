@@ -71,7 +71,7 @@ function NewPostHandler() {
                 <Form.Select id="selectedThread" size="sm" onChange={(e) => setSelectedThread(e.target.value)}>
                     <option>Choose a thread</option>
                     {threads.map(thread => (
-                        <option value={thread._id} key={thread._id}>{thread.title}</option>
+                        <option value={thread.id} key={thread.id}>{thread.title}</option>
                     ))}
                 </Form.Select>
             </Form.Group>

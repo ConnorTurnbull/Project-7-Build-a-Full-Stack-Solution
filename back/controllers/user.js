@@ -35,9 +35,9 @@ exports.signup = (req, res, next) => {
 
 exports.login = (req, res, next) => {
     console.log(req.body)
-
-    User.findOne({ email: req.body.email }).then(
+    User.findOne({ where: { email: req.body.email } }).then(
         (user) => {
+            console.log(user)
             if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
@@ -51,13 +51,13 @@ exports.login = (req, res, next) => {
                         });
                     }
                     const token = jwt.sign(
-                        { userId: user._id },
+                        { userId: user.id },
                         'RANDOM_TOKEN_SECRET',
                         { expiresIn: '24h' });
                     res.status(200).json({
-                        userId: user._id,
+                        userId: user.id,
                         token: token,
-                        user: user._doc
+                        user: user
                     });
                 }
             ).catch(
@@ -78,14 +78,14 @@ exports.login = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    User.findOne({ _id: req.body.userId }).then(
+    User.findOne({ where: { id: req.body.userId } }).then(
         (user) => {
             if (!user) {
                 return res.status(404).json({
                     error: new Error('User not found!')
                 });
             }
-            User.deleteOne({ _id: req.body.userId }).then(
+            User.deleteOne({ where: { id: req.body.userId } }).then(
                 () => {
                     res.status(200).json({
                         message: "User Deleted!"
@@ -108,43 +108,60 @@ exports.delete = (req, res, next) => {
     )
 }
 
-exports.read = async (req, res) => {
+exports.read = async (req, res, next) => {
     const userId = req.body.userId
-    const postId = req.body.postId
+    const postId = req.body.singlePostId
 
-    const user = await User.findOne({ _id: userId })
+    User.findOne({ where: { id: userId } })
         .then(async (user) => {
-            if (user.viewedPosts.includes(postId)) {
-                return user
+            if (user.viewedPosts.indexOf(postId) !== -1) {
+                return res.status(401).json({
+                    error: "Already viewed!"
+                })
             }
-            user.viewedPosts.push(postId)
-            const saved = await user.save()
-                .then(
-                    () => {
-                        return true
-                    }
-                ).catch(
-                    (error) => {
-                        res.status(400).json({
-                            error: error
-                        });
-                        return false
-                    }
-                );
-            if (saved) {
-                return user
+            if (user.viewedPosts.length) {
+                user.viewedPosts += `,${postId}`
             } else {
-                return null
+                user.viewedPosts = postId
             }
+            user.save().then(
+                () => {
+                    return res.status(200).json({
+                        message: "Post marked as read"
+                    })
+                }
+            ).catch(
+                (error) => {
+                    res.status(400).json({
+                        error: error
+                    });
+                }
+            );
         }).catch(
             (error) => {
                 res.status(404).json({
-                    error: error
+                    error: error,
+                    message: "User not found"
                 });
                 return null
             }
         );
-    if (!user) {
-        return
-    }
+}
+
+exports.readStatus = async (req, res, next) => {
+    const userId = req.body.userId
+    const postId = req.body.singlePostId
+
+    User.findOne({ where: { id: userId } })
+        .then(async (user) => {
+            if (user.viewedPosts.indexOf(postId)) {
+                return res.status(200).json(user)
+            }
+        }).catch(
+            (error) => {
+                return res.status(400).json({
+                    error: error
+                });
+            }
+        );
 }

@@ -17,6 +17,7 @@ function SideNav({
 {
     const [selectThread, setSelectThread] = useState('')
 
+    
     //Populate subscribed threads list:
 
     const getThreads = async ({ setThreads, queryString }) => {
@@ -33,9 +34,7 @@ function SideNav({
     useEffect(() => {
         getThreads({ setThreads, queryString: "?userId=" + session.userId })
     }, [])
-
-    console.log(threads)
-    
+      
     //Fetch posts for individual threads:
 
     function getPosts() {
@@ -56,7 +55,7 @@ function SideNav({
         if (!!selectThread) {
             getPosts()
             setThreadState(true)
-             setDefaultState(false)
+            setDefaultState(false)
             setSearchState(false)
             setPostState(false)
         }
@@ -82,10 +81,10 @@ function SideNav({
 
                     <Button
                         variant="light"
-                        onClick={() => setSelectThread(thread._id)}
+                        onClick={() => setSelectThread(thread.id)}
                         title={thread.title}
-                        value={thread._id}
-                        key={thread._id}
+                        value={thread.id}
+                        key={thread.id}
                     >
 
                         {thread.title}

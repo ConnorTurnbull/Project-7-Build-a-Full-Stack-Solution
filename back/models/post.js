@@ -1,12 +1,29 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require("../connect");
 
-const postSchema = mongoose.Schema({
-    selectedThread: { type: String, required: true },
-    postTitle: { type: String, required: true },
-    text: { type: String, required: true },
-    imageUrl: { type: Object, required: true },
-    comments: { type: [String]}
-});
+const Post = sequelize.define('Post', {
+    selectedThread: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    postTitle: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    text: {
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    imageUrl: {
+        type:DataTypes.STRING,
+        allowNull: false
+    }
+})
 
+module.exports = Post;
 
-module.exports = mongoose.model('Post', postSchema);
+Post.sync({ alter: true }).then((data) => {
+    console.log("Table synced successfully")
+}).catch((error) => {
+    console.log("Error syncing table!")
+})
