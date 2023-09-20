@@ -147,21 +147,3 @@ exports.read = async (req, res, next) => {
             }
         );
 }
-
-exports.readStatus = async (req, res, next) => {
-    const userId = req.body.userId
-    const postId = req.body.singlePostId
-
-    User.findOne({ where: { id: userId } })
-        .then(async (user) => {
-            if (user.viewedPosts.indexOf(postId)) {
-                return res.status(200).json(user)
-            }
-        }).catch(
-            (error) => {
-                return res.status(400).json({
-                    error: error
-                });
-            }
-        );
-}

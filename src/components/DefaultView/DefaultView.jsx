@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Card, Button } from 'react-bootstrap';
 import Post from "../Post/Post";
 
 function DefaultView({
@@ -10,12 +9,24 @@ function DefaultView({
     setDefaultState,
     setThreadState,
     session }) {
-    const [allPosts, setAllPosts] = useState([])
 
+    const [allPosts, setAllPosts] = useState([])
+    const userId = session.userId
     console.log("DefaultView")
+
+
+
+
+    useEffect(() => {
+
+        getAllPosts()
+
+    }, [])
+
 
     const getAllPosts = async => {
         fetch("//localhost:4200/api/auth/posts/all")
+
             .then(data => {
                 return data.json()
             })
@@ -24,12 +35,6 @@ function DefaultView({
                 setAllPosts(postData)
             })
     }
-
-    useEffect(() => {
-
-        getAllPosts()
-
-    }, [])
 
     function setPostView() {
 
@@ -41,19 +46,18 @@ function DefaultView({
     }
 
 
-
     return (
 
-        <Post 
+        <Post
             allPosts={allPosts}
             setPostId={setPostId}
             setPostView={setPostView}
             postId={postId}
             userId={session.userId}
+            session={session}
+
         />
     )
-
-
 }
 
 export default DefaultView
