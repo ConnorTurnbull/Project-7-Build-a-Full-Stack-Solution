@@ -49,14 +49,14 @@ const SignUpHandler = ({ setAuthenticated, setSession, setDefaultState }) => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="Forename">
 
                 <Form.Label>Forename</Form.Label>
                 <Form.Control type="name" placeholder="Enter forename" onChange={(e) => setForename(e.target.value)} />
 
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="Surname">
 
                 <Form.Label>Surname</Form.Label>
                 <Form.Control type="name" placeholder="Enter surname" onChange={(e) => setSurname(e.target.value)} />
@@ -70,14 +70,14 @@ const SignUpHandler = ({ setAuthenticated, setSession, setDefaultState }) => {
 
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="Password">
 
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="Re-enter Password">
 
                 <Form.Label>Re-enter Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />

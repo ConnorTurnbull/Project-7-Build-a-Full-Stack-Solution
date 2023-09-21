@@ -11,7 +11,7 @@ import Login from './components/Login/LoginPopup';
 import Logout from './components/Logout/Logout';
 import PostView from './components/PostView/PostView';
 import SideNav from './components/SideNav/SideNav';
-import SignUp from './components/SignUp/SignUpPopup';
+import SignUpPopup from './components/SignUp/SignUpPopup';
 import SearchBar from './components/Search/SearchBar';
 import SearchResultCard from './components/Search/SearchResultCard';
 
@@ -139,7 +139,7 @@ function App() {
 
             <Col className='thread-nav bg-secondary pb-3' sm={2}>
 
-              <HomeButton
+              <HomeButton 
 
                 setDefaultState={setDefaultState}
                 setThreadState={setThreadState}
@@ -248,7 +248,7 @@ function App() {
 
           <Col className="px-1 d-flex justify-content-center" sm={{ span: 1, offset: 8 }}>
 
-            <Login
+            <Login className="LoginButton"
 
               setAuthenticated={setAuthenticated}
               setSession={setSession}
@@ -265,7 +265,7 @@ function App() {
 
           <Col className="px-1 d-flex justify-content-center" sm={1}>
 
-            <SignUp
+            <SignUpPopup
 
               setAuthenticated={setAuthenticated}
               setSession={setSession}

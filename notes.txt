@@ -1,18 +1,22 @@
 DONE:
 
-Backend redux
-    - Unread/read posts currently erroring out
-    - Sidenav not populating on initial page load
-    - Comments not working
-    - check for array stuff and make it string stuff
-
+Delete account not working
+    - syntax error, changed deleteOne to destroy in User controller.
+Signup function not working properly
+    - reverted changes made in session and added proper prop pass-through
+    - not sure how this was working in the first place without pass-through?
+        
 TO DO:
 
+Finish read/unread functionality:
+    Cannot implement conditional rendering per state at present - just doesn't work can't fix.
+    
 Fix user threads in side nav
-    - Same threads displaying for all users even when not subbed (need to verify)
+    - Same threads displaying for all users even when not subbed
     - check logout function in case not clearing session properly
 
-Posts not being fetched properly per thread?
+
+
 
 Fix delete account Dropdown
  - staying open when used

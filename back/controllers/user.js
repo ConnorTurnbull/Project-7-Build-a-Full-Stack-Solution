@@ -78,6 +78,7 @@ exports.login = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
+    console.log(req.body)
     User.findOne({ where: { id: req.body.userId } }).then(
         (user) => {
             if (!user) {
@@ -85,7 +86,7 @@ exports.delete = (req, res, next) => {
                     error: new Error('User not found!')
                 });
             }
-            User.deleteOne({ where: { id: req.body.userId } }).then(
+            User.destroy({ where: { id: req.body.userId } }).then(
                 () => {
                     res.status(200).json({
                         message: "User Deleted!"

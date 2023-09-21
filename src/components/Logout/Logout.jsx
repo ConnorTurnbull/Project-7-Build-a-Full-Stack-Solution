@@ -24,7 +24,7 @@ const Logout = ({
     function DeleteHandler(e) {
         e.preventDefault()
         const userId = session.userId
-
+        console.log(userId)
         fetch("//localhost:4200/api/auth/delete", {
             method: 'DELETE',
             body: JSON.stringify({ userId }),
@@ -36,6 +36,7 @@ const Logout = ({
         )
     }
 
+    
     return (
         <Dropdown as={ButtonGroup} >
 

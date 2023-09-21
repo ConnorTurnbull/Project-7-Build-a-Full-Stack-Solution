@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import "../../scss/popup.scss"
 import logo from "../../images/icon-black-small.png"
-import SignUp from "./SignUpHandler";
+import SignUpHandler from "./SignUpHandler";
 
 
-function Popup() {
+function SignUpPopup({ setAuthenticated, setSession, setDefaultState }) {
   const [popup, setPopup] = useState(false)
   const togglePopup = () => {
     setPopup(!popup)
@@ -27,7 +27,11 @@ function Popup() {
               X
             </Button>
             
-            <SignUp />
+            <SignUpHandler 
+              setAuthenticated={setAuthenticated}
+              setSession={setSession} 
+              setDefaultState={setDefaultState}
+            />
 
           </div>
         </div>
@@ -36,4 +40,4 @@ function Popup() {
   )
 }
 
-export default Popup
+export default SignUpPopup
