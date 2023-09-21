@@ -26,3 +26,9 @@
     display: flex;
     justify-content: center;
 }
+
+.card-img {
+    object-fit: cover;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}

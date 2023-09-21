@@ -2,21 +2,29 @@ DONE:
 
 Delete account not working
     - syntax error, changed deleteOne to destroy in User controller.
+
 Signup function not working properly
     - reverted changes made in session and added proper prop pass-through
     - not sure how this was working in the first place without pass-through?
+
+Read/unread
+    - functionality finished in session
+    - currently an error on sign up regarding viewedPosts
+
+Styling Changes:
+    - fixed image stretching
+    - set card body height to ensure consistency
+    - added text truncation to post text as causing card layout issues
         
 TO DO:
-
-Finish read/unread functionality:
-    Cannot implement conditional rendering per state at present - just doesn't work can't fix.
-    
+   
 Fix user threads in side nav
     - Same threads displaying for all users even when not subbed
     - check logout function in case not clearing session properly
 
+Fix thread titles in thread state
 
-
+Streamline post/content card components/views
 
 Fix delete account Dropdown
  - staying open when used
@@ -26,7 +34,8 @@ Styling for mobile devices
     - min-height
     - overflow y auto?
     - maybe sticky header?
-
+    
+    
 QUESTIONS:
 
 

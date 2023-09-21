@@ -4,24 +4,26 @@ import { Button, Col, Row, Container, Image, Stack, InputGroup, Form } from 'rea
 
 //Components:
 import BrowseThreads from './components/BrowseThreads/BrowseThreads';
-import ContentCard from './components/ContentCard/ContentCard';
 import DefaultView from './components/DefaultView/DefaultView';
 import HomeButton from './components/HomeButton/HomeButton';
 import Login from './components/Login/LoginPopup';
 import Logout from './components/Logout/Logout';
+import NewPostPopup from './components/NewPost/NewPostPopup';
+import NewThreadPopup from './components/NewThread/NewThreadPopup';
 import PostView from './components/PostView/PostView';
 import SideNav from './components/SideNav/SideNav';
 import SignUpPopup from './components/SignUp/SignUpPopup';
 import SearchBar from './components/Search/SearchBar';
 import SearchResultCard from './components/Search/SearchResultCard';
+import ThreadView from './components/ThreadView/ThreadView';
 
 //Images:
 import MainLogo from './images/icon-left-font-monochrome-black.svg';
 
 //Stylesheets:
 import './scss/App.scss';
-import NewPostPopup from './components/NewPost/NewPostPopup';
-import NewThreadPopup from './components/NewThread/NewThreadPopup';
+
+
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
   const [threads, setThreads] = useState([])
   const [posts, setPosts] = useState([])
   const [postId, setPostId] = useState('')
+  const [selectThread, setSelectThread] = useState('')
+
   
   console.log("Default State" + defaultState)
   console.log("Search State" + searchState)
@@ -145,6 +149,7 @@ function App() {
                 setThreadState={setThreadState}
                 setSearchState={setSearchState}
                 setPostState={setPostState}
+                setSelectThread={setSelectThread}
 
               />
 
@@ -162,6 +167,8 @@ function App() {
                 setPosts={setPosts}
                 threads={threads}
                 setThreads={setThreads}
+                selectThread={selectThread}
+                setSelectThread={setSelectThread}
 
               />
 
@@ -197,16 +204,18 @@ function App() {
 
                 /> : null}
 
-                {threadState ? <ContentCard
+                {threadState ? <ThreadView
 
                   posts={posts}
                   setPostState={setPostState}
-                  setThreadState={setThreadState}
                   setDefaultState={setDefaultState}
                   setSearchState={setSearchState}
-                  postId={postId}
+                  setThreadState={setThreadState}
+                  threadState={threadState}
+                  selectThread={selectThread}
+                  setSelectThread={setSelectThread}
+                  setPosts={setPosts}
                   setPostId={setPostId}
-                  session={session}
 
                 /> : null}
 
