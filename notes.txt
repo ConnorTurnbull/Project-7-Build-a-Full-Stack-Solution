@@ -19,6 +19,9 @@ Styling Changes:
 Streamlined post/thread/content card components
     - removed content cards
     - added thread view
+
+Mobile styling started
+    - nav buttons / section titles need aligning
         
 TO DO:
 

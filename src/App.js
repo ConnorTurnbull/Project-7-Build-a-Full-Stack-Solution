@@ -51,7 +51,7 @@ function App() {
   if (authenticated) {
 
     return (
-      <div className='app' >
+      <div className='app mobile-font' >
         <Container fluid className="bg-primary"  >
           <header>
             <nav>
@@ -59,7 +59,7 @@ function App() {
 
                 {/* Main Logo */}
 
-                <Col className='d-flex align-items-center' sm={2}>
+                <Col className='logo-margin-bottom d-flex align-items-center' sm={2}>
 
                   <Image fluid src={MainLogo} />
 
@@ -67,7 +67,7 @@ function App() {
 
                 {/* Search Bar */}
 
-                <Col className="px-1 d-flex justify-content-center" sm={{ span: 4, offset: 0 }}>
+                <Col className="nav-margins px-1 d-flex justify-content-center" sm={{ span: 4, offset: 0 }}>
 
                   <SearchBar
 
@@ -81,9 +81,9 @@ function App() {
 
                 {/* Browse All Threads */}
 
-                <Col className="px-1 d-flex justify-content-start" sm={{ span: 2, offset: 0 }} >
+                <Col className="nav-margins browse-button px-1 d-flex " sm={{ span: 2, offset: 0 }} >
 
-                  <BrowseThreads
+                  <BrowseThreads 
 
                     setSearchResults={setSearchResults}
                     setSearchState={setSearchState}
@@ -98,7 +98,7 @@ function App() {
 
                 {/* New Thread */}
 
-                <Col className="px-1 d-flex justify-content-center" sm={{ span: 1, offset: 1 }}>
+                <Col className="nav-margins px-1 d-flex justify-content-center" sm={{ span: 1, offset: 1 }}>
 
                   <NewThreadPopup />
 
@@ -106,7 +106,7 @@ function App() {
 
                 {/* New Post */}
 
-                <Col className='px-1 d-flex justify-content-center' sm={{ span: 1, offset: 0 }}>
+                <Col className='nav-margins px-1 d-flex justify-content-center' sm={{ span: 1, offset: 0 }}>
 
                   <NewPostPopup />
 
@@ -245,12 +245,12 @@ function App() {
 
   return (
     <div className='app' >
-      <Container fluid className="bg-primary"  >
+      <Container fluid className="bg-primary mobile-font"  >
         <Row className='p-3'>
 
           {/* Main Logo */}
 
-          <Col sm={2}>
+          <Col className="logo-margin-bottom"sm={2}>
 
             <Image fluid src={MainLogo} />
 
@@ -258,9 +258,9 @@ function App() {
 
           {/* Login Button */}
 
-          <Col className="px-1 d-flex justify-content-center" sm={{ span: 1, offset: 8 }}>
+          <Col className="nav-margins px-1 d-flex justify-content-center" sm={{ span: 1, offset: 8 }}>
 
-            <Login className="LoginButton"
+            <Login
 
               setAuthenticated={setAuthenticated}
               setSession={setSession}

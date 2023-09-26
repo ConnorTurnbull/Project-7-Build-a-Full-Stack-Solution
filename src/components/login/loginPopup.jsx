@@ -19,7 +19,7 @@ function LoginPopup({ setAuthenticated, setSession, setDefaultState, threads }) 
 
   return (
     <>
-      <Button className='w-100 text-nowrap' variant="light" size='sm' onClick={togglePopup}>
+      <Button className='w-100 text-nowrap mobile-font' variant="light" size='sm' onClick={togglePopup}>
         Log In
       </Button>
 

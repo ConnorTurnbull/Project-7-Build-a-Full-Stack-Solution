@@ -22,7 +22,7 @@ function SearchBar({ setSearchResults, setSearchState, setDefaultState }) {
     return (
         <Form className="w-100">
             <InputGroup >
-                <Form.Control name='Search Bar' onChange={(e) => setUserSearch(e.target.value)} placeholder="Discover new threads..." />
+                <Form.Control className="mobile-font" name='Search Bar' onChange={(e) => setUserSearch(e.target.value)} placeholder="Discover new threads..." />
                 <Button title='Search submit button' onClick={queryThreads} size='sm' variant="light" >
                     <Search aria-hidden="true" />
                 </Button>

@@ -1,5 +1,7 @@
 .app {
     height: auto;
+
+
     
 }
 
@@ -31,4 +33,42 @@
     object-fit: cover;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.logo-margin-bottom {
+    @media (max-width: 576px) {
+        margin-bottom: 1rem;
+    }
+}
+
+.nav-margins {
+    @media (max-width: 576px) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.browse-button {
+    justify-content: start;
+
+    @media (max-width: 576px) {
+        justify-content: center;
+        width: 100%;
+        
+    }
+}
+
+.logout-button {
+    justify-content: start;
+
+    @media (max-width: 576px) {
+        margin-top: 2rem;
+        justify-content: center;
+        width: 80%;
+    }
+}
+
+.mobile-font {
+    @media (max-width: 576px) {
+        font-size: 1rem;
+    }
 }

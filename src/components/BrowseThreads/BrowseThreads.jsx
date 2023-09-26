@@ -19,7 +19,7 @@ function BrowseThreads({ setSearchResults, setDefaultState, setSearchState, setT
     }
 
     return (
-        <Button  variant="light" onClick={queryThreads}>
+        <Button className="browse-button mobile-font" size="sm"  variant="light" onClick={queryThreads}>
             Browse Threads
         </Button>
     )

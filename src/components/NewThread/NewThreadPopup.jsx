@@ -11,7 +11,7 @@ function NewThreadPopup() {
 
     return (
         <>
-            <Button className='w-100 text-nowrap' size='sm' variant="light" onClick={togglePopup}>
+            <Button className='w-100 text-nowrap mobile-font' size='sm' variant="light" onClick={togglePopup}>
                 New Thread
             </Button>
 

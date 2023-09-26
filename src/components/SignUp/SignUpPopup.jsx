@@ -13,7 +13,7 @@ function SignUpPopup({ setAuthenticated, setSession, setDefaultState }) {
 
   return (
     <>
-      <Button className='w-100 text-nowrap' size='sm' variant="light" onClick={togglePopup}>
+      <Button className='w-100 text-nowrap mobile-font' size='sm' variant="light" onClick={togglePopup}>
         Sign Up
       </Button>
 
