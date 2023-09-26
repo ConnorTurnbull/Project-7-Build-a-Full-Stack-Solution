@@ -205,17 +205,20 @@ function App() {
                 /> : null}
 
                 {threadState ? <ThreadView
-
-                  posts={posts}
+                  session={session}
                   setPostState={setPostState}
                   setDefaultState={setDefaultState}
                   setSearchState={setSearchState}
                   setThreadState={setThreadState}
                   threadState={threadState}
+                  
+                  threads={threads}
                   selectThread={selectThread}
                   setSelectThread={setSelectThread}
+                  posts={posts}
                   setPosts={setPosts}
                   setPostId={setPostId}
+                  
 
                 /> : null}
 

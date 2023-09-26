@@ -25,7 +25,7 @@ function Post({ allPosts, setPostId, setPostView, userId, postId, session }) {
 
             {allPosts.map(post => (
                 <Col sm={6} className=" d-flex justify-content-center g-5">
-                    <Card border='secondary' style={{ width: '20rem' }}>
+                    <Card border='secondary' style={{ height: '30rem', width: '22rem' }}>
                         <Card.Img className="img-fluid card-img" style={{ height: '75%' }} variant="top" src={post.imageUrl} />
 
                         {!session.user.viewedPosts.includes(post.id) &&

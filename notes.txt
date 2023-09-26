@@ -15,16 +15,19 @@ Styling Changes:
     - fixed image stretching
     - set card body height to ensure consistency
     - added text truncation to post text as causing card layout issues
+
+Streamlined post/thread/content card components
+    - removed content cards
+    - added thread view
         
 TO DO:
-   
+
+Fix thread titles in thread state   
+
 Fix user threads in side nav
     - Same threads displaying for all users even when not subbed
     - check logout function in case not clearing session properly
-
-Fix thread titles in thread state
-
-Streamline post/content card components/views
+    - set threads on log in?
 
 Fix delete account Dropdown
  - staying open when used
