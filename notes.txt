@@ -3,13 +3,11 @@ DONE:
 Delete account not working
     - syntax error, changed deleteOne to destroy in User controller.
 
-Signup function not working properly
-    - reverted changes made in session and added proper prop pass-through
-    - not sure how this was working in the first place without pass-through?
+Fixed Signup function not working properly
+    - incorporated login request into submission request
 
 Read/unread
     - functionality finished in session
-    - currently an error on sign up regarding viewedPosts
 
 Styling Changes:
     - fixed image stretching
@@ -21,26 +19,18 @@ Streamlined post/thread/content card components
     - added thread view
 
 Mobile styling started
-    - nav buttons / section titles need aligning
         
+Fixed same subbed threads displaying for all users
+    - added id query to thread controller
+
+
+Thread titles added to thread view
+
 TO DO:
 
-Fix thread titles in thread state   
+Fix search
+User not found for login + prevent state change
 
-Fix user threads in side nav
-    - Same threads displaying for all users even when not subbed
-    - check logout function in case not clearing session properly
-    - set threads on log in?
-
-Fix delete account Dropdown
- - staying open when used
-
-Styling for mobile devices
-    Managing page height between states / pages?
-    - min-height
-    - overflow y auto?
-    - maybe sticky header?
-    
     
 QUESTIONS:
 

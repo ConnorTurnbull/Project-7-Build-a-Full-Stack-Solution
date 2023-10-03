@@ -26,10 +26,13 @@ exports.newThread = (req, res, next) => {
 exports.getThread = async (req, res, next) => {
 
   const options = {}
+  
   if (req.query.userId) {
-    const userThreads = await User.findOne().then(
+    const userThreads = await User.findOne({where: {id: req.query.userId}}).then(
       (user) => {
+        console.log(user.threads)
         return user.threads
+        
       }
     )
     if (!userThreads || !userThreads.length) {
@@ -42,7 +45,7 @@ exports.getThread = async (req, res, next) => {
   else if (req.query.title) {
     options.title = { $regex: new RegExp(req.query.title, "i") }
   }
-
+  console.log(options)
   Thread.findAll({where:options}).then(
     (threads) => {
       console.log(threads)

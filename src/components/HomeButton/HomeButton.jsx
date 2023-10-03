@@ -13,8 +13,8 @@ function HomeButton({ setDefaultState, setThreadState, setSearchState, setPostSt
     }
 
     return (
-        <div className="d-flex justify-content-center m-3">
-            <Button className="browse-button mobile-font d-flex align-items-center" variant="light" size="sm" onClick={Home}>
+        <div className="d-flex justify-content-center m-3 home-margin">
+            <Button className="browse-button home-button mobile-font d-flex align-items-center" variant="light" size="sm" onClick={Home}>
                 <House /> Home
             </Button>
         </div>

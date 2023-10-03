@@ -40,7 +40,7 @@ const Logout = ({
     return (
         <Dropdown className="logout-button" as={ButtonGroup} >
 
-            <Button onClick={LogoutHandler} className='w-100 text-nowrap mobile-font' size='sm' variant="light">
+            <Button onClick={LogoutHandler} className='w-100 text-nowrap mobile-font logout-text' size='sm' variant="light">
                 Log Out
             </Button>
 

@@ -31,7 +31,6 @@ function DefaultView({
                 return data.json()
             })
             .then(postData => {
-                console.log(postData)
                 setAllPosts(postData)
             })
     }
@@ -44,7 +43,6 @@ function DefaultView({
         setThreadState(false)
 
     }
-
 
     return (
 

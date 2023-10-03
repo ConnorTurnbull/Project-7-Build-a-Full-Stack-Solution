@@ -20,7 +20,7 @@ const LoginHandler = ({ setAuthenticated, setSession, setDefaultState, threads }
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json())
-
+            
             .then(session => {
                 sessionStorage.setItem('userId', session.userId)
                 setSession(session)
@@ -28,7 +28,6 @@ const LoginHandler = ({ setAuthenticated, setSession, setDefaultState, threads }
             .then(setSuccess(true))
             .then(setTimeout(setAuth, 2000))
     }
-
 
     if (success) return (
         <Col>

@@ -17,23 +17,26 @@ function SideNav({
 }) 
 
 {
+    useEffect(() => {
+        getThreads({ setThreads, queryString: "?userId=" + session.userId })
+    }, [])
+
     
     //Populate subscribed threads list:
 
     const getThreads = async ({ setThreads, queryString }) => {
-
+        
         fetch("//localhost:4200/api/auth/thread" + (queryString ||""))
             .then(data => {
                 return data.json()
             })
             .then(threadData => {
                 setThreads(threadData)
+                
             })
     }
     
-    useEffect(() => {
-        getThreads({ setThreads, queryString: "?userId=" + session.userId })
-    }, [])
+
     
     useEffect(() => {
 
@@ -59,7 +62,8 @@ function SideNav({
 
                     <Button
                         variant="light"
-                        onClick={() => {setSelectThread(thread.id); console.log(selectThread)}}
+                        className="thread-button"
+                        onClick={() => {setSelectThread(thread)}}
                         title={thread.title}
                         value={thread.id}
                         key={thread.id}

@@ -17,6 +17,8 @@ function Post({ allPosts, setPostId, setPostView, userId, postId, session }) {
 
     }
     
+    console.log(session.user)
+
     return Array.isArray(allPosts) ? <>
 
         <Row className="gy-3 active-popup w-100">

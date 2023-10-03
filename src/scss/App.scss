@@ -62,7 +62,24 @@
 
     @media (max-width: 576px) {
         margin-top: 2rem;
-        justify-content: center;
+        align-self: center;
+        width: 80%;
+
+        .logout-text {
+            padding-left: 30px;
+        }
+    }
+}
+
+.home-button {
+    @media (max-width: 576px) {
+        width: 80%;
+
+    }
+}
+
+.thread-button {
+    @media (max-width: 576px) {
         width: 80%;
     }
 }

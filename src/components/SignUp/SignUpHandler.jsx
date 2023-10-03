@@ -23,12 +23,35 @@ const SignUpHandler = ({ setAuthenticated, setSession, setDefaultState }) => {
             headers: { 'Content-Type': 'application/json' }
         }).then(res => res.json())
 
-            .then(session => { 
-                sessionStorage.setItem('userId', session.userId)
-                setSession(session)
-            })
-            .then(setSuccess(true))
-            .then(setTimeout(setAuth, 2000))
+            .then(() => { 
+                fetch("//localhost:4200/api/auth/login", {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(res => {
+                    if (res.status === 200) {
+                        return res.json()
+                    }else {
+                        throw new Error(res.json())
+                    }
+                })
+                    .then(session => {
+                        sessionStorage.setItem('userId', session.userId)
+                        setSession(session)
+                    })
+                    .then(setSuccess(true))
+                    .then(setTimeout(setAuth, 2000)
+                    ).catch(
+                        (error) => {
+                            alert(error.error)
+                        }
+                    )
+        
+            }).catch(
+                (error) => {
+                    alert(error.message)
+                }
+            )
     }
 
     if (success) return (

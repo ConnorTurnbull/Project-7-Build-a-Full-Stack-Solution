@@ -19,7 +19,7 @@ function ThreadView({ session, posts, setPostState, setDefaultState, setSearchSt
 
     function getPosts() {
 
-        fetch("//localhost:4200/api/auth/posts?selectedThread=" + selectThread)
+        fetch("//localhost:4200/api/auth/posts?selectedThread=" + selectThread.id)
             .then(data => {
                 return data.json()
             })
@@ -37,13 +37,10 @@ function ThreadView({ session, posts, setPostState, setDefaultState, setSearchSt
 
     }, [selectThread])
 
-
-    
-    console.log(threads)
-
+  
     return (
         <Row className="gy-3 active-popup">
-        <p className="text-center m-0">Title{}</p>
+        <p className="text-center m-0">{selectThread.title}</p>
         <div className="nav-divider d-flex mt-2"></div>
         
         {Array.isArray(posts) ? posts.map(posts => (
