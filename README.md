@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+<h1>Project 7 - Build a full stack solution </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<b>Scenario</b>
+</br>
+</br>
+You’ve been hired at CONNECT-E, a small agency of about a dozen employees, including three project managers, four developers, a graphic designer, two salespeople, a marketing strategist, and the director, who started the agency eight years ago.
 
-## Available Scripts
+ 
 
-In the project directory, you can run:
+![image](https://github.com/ConnorTurnbull/project-7/assets/110614970/bb652131-7721-4865-afda-8224332e4f80)
 
-### `npm start`
+Your director, Stephanie, invites the entire agency for a drink to celebrate some good news! She has just signed a contract for a new ambitious project! 🥂
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The client in question is Groupomania, a large group and one of the most loyal clients of the agency.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](https://github.com/ConnorTurnbull/project-7/assets/110614970/400d5dad-0040-402a-b59e-691aba0eda4c)
 
-### `npm test`
+The project will be to build an internal social network for Groupomania's employees. The goal of this tool is to facilitate more interaction between colleagues. Groupomania's HR department has envisioned two applications for promoting exchanges between colleagues. Otherwise, they’re allowing for a lot of flexibility regarding the functionalities of the network.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Stephanie describes the proposed apps, and you realize that these are spin-offs of products that already exist:
 
-### `npm run build`
+- 9GAG, because they want employees to share and comment on gifs with other colleagues.
+- Reddit, because they want employees to write and/or share articles with colleagues on topics of interest to them.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Stephanie puts you in charge of the project. You’ll need to analyze the client’s needs and develop an initial functional version. She explains that she’ll send you further details.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Shortly thereafter, you receive the following email from her:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+>From: Stephanie J</br>
+To: Me</br>
+Subject: Groupomania app details
+>
+>
+>Hello,
+>
+>Glad to have you on this exciting new project! 
+>
+>I was able to get Groupomania’s HR manager to agree to have a Groupomania employee test a minimal version of the tool with only one of the two apps. The benefit on their end is that this will promote the adoption of the tool internally. The benefit on our end is that this will ensure we’re on track with their expectations before we jump into developing the second app. So you’ll need to deliver an initial functional version of just one of the two apps they’ve envisioned. Feel free to choose whichever of the two interests you more, but let me know your decision asap.
+>
+>Attached you’ll find Groupomania’s user requirements specifications detailing the minimum features expected for each app. They’ve also provided a file with the company's logos. 
+>
+>Please note that Groupomania expects the application to meet high standards of security and accessibility. The only other constraint to be aware of is that they currently use SQL for their data store. As for the front-end, you should use React as it's the framework they use for most of their applications.
+>
+>Since the project parameters seem to be in flux, I think taking an agile approach would be the best suited, allowing us to react efficiently to any feedback we get from the client during the project lifecycle. I recommend using a kanban tool like Trello to plan and estimate the time you’ll need for each of your tasks and track the project’s progress. Once you have a functional version of an app ready, I’d like to briefly discuss how you managed your tasks so that I can start getting a sense of your workflow.  
+>
+>If you have any questions, don’t hesitate to reach out!
+>
+>Stephanie J
+Director
+CONNECT-E
+>
+>Attachments:
+>
+>User Requirement Specifications
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You have everything you need to start planning and familiarizing yourself with Groupomania’s needs. You’re ready to dive in!
