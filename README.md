@@ -52,6 +52,6 @@ CONNECT-E
 >
 >Attachments:
 >
->User Requirement Specifications
+>[User Requirement Specifications](https://github.com/ConnorTurnbull/Project-7-Build-a-Full-Stack-Solution/blob/master/Groupomania_Expression_Needs.pdf)
 
 You have everything you need to start planning and familiarizing yourself with Groupomania’s needs. You’re ready to dive in!
