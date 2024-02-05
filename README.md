@@ -7,6 +7,17 @@ To run project on localhost:</br>
 - "npm run start" from 'Project 7' top level folder.</br>
 <h3>Backend</h3>
 - "nodemon server" from 'project7/back'.</br>
+<h2>Tech Stack</h2>
+- ReactJS</br>
+- React-Bootstrap</br>
+- Bootstrap</br>
+- HTML5</br>
+- CSS3</br>
+- Sass</br>
+- Express</br>
+- Sequelize</br>
+- SQLite3</br>
+- Multer
 <h2>Scenario</h2>
 You’ve been hired at CONNECT-E, a small agency of about a dozen employees, including three project managers, four developers, a graphic designer, two salespeople, a marketing strategist, and the director, who started the agency eight years ago.
 </br>
