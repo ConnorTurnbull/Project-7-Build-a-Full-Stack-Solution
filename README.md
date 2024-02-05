@@ -1,11 +1,15 @@
 <h1>Project 7 - Build a full stack solution </h1>
-
-<b>Scenario</b>
-</br>
-</br>
+<h2>Overview</h2>
+This is the final project from my web develoment course. In short it is a Reddit style social media platform for employees of a company to share photos and comments, as per the below scenario. The frontend was built using ReactJS and the backend is Express and Sequelize.
+<h2>Instructions</h2>
+To run project on localhost:</br>
+<h3>Frontend</h3>
+- "npm run start" from 'Project 7' top level folder.</br>
+<h3>Backend</h3>
+- "nodemon server" from 'project7/back'.</br>
+<h2>Scenario</h2>
 You’ve been hired at CONNECT-E, a small agency of about a dozen employees, including three project managers, four developers, a graphic designer, two salespeople, a marketing strategist, and the director, who started the agency eight years ago.
-
- 
+</br>
 
 ![image](https://github.com/ConnorTurnbull/project-7/assets/110614970/bb652131-7721-4865-afda-8224332e4f80)
 
